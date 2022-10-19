@@ -1,3 +1,3 @@
-for contador in range(1,12,2):
+for contador in range(12):
     print(contador)
 

@@ -1,4 +1,7 @@
 #ENTRADA
+from ast import AsyncFunctionDef
+
+
 numero1 = input("Número 1 : ")
 numero2 = input("Número 2 : ")
 operacion = input("Operación a ejecutar(suma,resta) : ")
@@ -8,6 +11,8 @@ if(operacion == "suma"):
     resultado = int(numero1) + int(numero2)
 elif(operacion == "resta"):
     resultado = int(numero1) - int(numero2)
+elif(operacion == "multiplicacion"):
+    resultado = int(numero1) * int(numero2)
 else:
     resultado = ""
 #SALIDA
