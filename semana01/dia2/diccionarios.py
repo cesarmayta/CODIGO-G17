@@ -23,3 +23,12 @@ print(capitales)
 c = capitales.pop('Colombia','no existe')
 print('eliminaste ' + c)
 print(capitales)
+
+for clave in capitales.keys():
+    print(clave)
+    
+for clave in capitales.values():
+    print(clave)
+    
+for clave,valor in capitales.items():
+    print("la capital de " + clave + " es " + valor)
