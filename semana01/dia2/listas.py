@@ -21,3 +21,4 @@ for dia in dias:
     diasCorrectos.append(dia)
     
 print(diasCorrectos)
+
