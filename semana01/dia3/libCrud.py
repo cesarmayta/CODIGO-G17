@@ -1,4 +1,5 @@
 ##### LIBRERIA PARA CRUD DE ALUMNOS ####
+from tabulate import tabulate
 def mostrarMenu():
     print(
         """
@@ -29,10 +30,16 @@ def insertaAlumno(listaAlumnos):
     
 def mostrarAlumnos(listaAlumnos):
     print("[2] MOSTRAR ALUMNOS")
+    tabla = []
     for alumno in listaAlumnos:
-        print('-'*20)
-        for a,b in alumno.items():
-            print(a + " - " + b)
+        fila = []
+        for valor in alumno.values():
+            fila.append(valor)
+        tabla.append(fila)
+        
+    columnas = ["nombre","email","celular"]
+
+    print(tabulate(tabla,headers=columnas,tablefmt="grid"))
             
 def buscarAlumno(valorBusqueda,listaAlumnos):
     posicionBusqueda = -1
