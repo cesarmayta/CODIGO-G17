@@ -96,7 +96,7 @@ while(opcion != "5"):
             listaAlumnos[posicionBusqueda] = dicAlumnoEditar
             print('ALUMNO ACTUALIZADO !!!')
     elif(opcion == "4"):
-        print("[4] ELIMINAR ALUMNO")
+        print("[4] ELIMINAR ALUMNO") 
     elif(opcion == "5"):
         print(" [5] ESTA SALIENDO DEL PROGRAMA ...")
     else:
