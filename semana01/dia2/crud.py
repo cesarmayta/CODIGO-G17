@@ -19,7 +19,7 @@ listaAlumnos = [alumno]
 opcion = "0"
 while(opcion != "5"):
     if(opcion != "0"):
-        time.sleep(2)
+        time.sleep(1)
         os.system("clear")
     print(
         """
@@ -35,6 +35,7 @@ while(opcion != "5"):
         """
     )
     opcion = input("INGRESE UN OPCIÓN DEL PROGRAMA : ")
+    os.system("clear")
     if(opcion == "1"):
         print("[1] REGISTRO DE NUEVO ALUMNO")
         nombre = input("NOMBRE : ")
@@ -58,6 +59,42 @@ while(opcion != "5"):
             
     elif(opcion == "3"):
         print("[3] ACTUALIZAR ALUMNO")
+        #PASO 1: buscar por el email el diccionario a editar
+        valorBusqueda = input('Ingrese el email del alumno a actualizar : ')
+        posicionBusqueda = -1
+        for contador in range(len(listaAlumnos)):
+            dicAlumno = listaAlumnos[contador]
+            for clave,valor in dicAlumno.items():
+                if(clave == "email" and valor == valorBusqueda):
+                    posicionBusqueda = contador
+                    break
+                
+        if(posicionBusqueda == -1):
+            print("No se encontro el alumno con el email ingresado :-(")
+        else:
+            print("ALUMNO ENCONTRADO : " + listaAlumnos[posicionBusqueda].get("nombre"))
+            print("INGRESE NUEVOS VALORES PARA EL ALUMNO ENCONTRADO")
+            
+            nombre = input('NUEVO NOMBRE : ')
+            if(nombre == ''):
+                nombre = listaAlumnos[posicionBusqueda].get("nombre")
+                
+            email = input('NUEVO EMAIL : ')
+            if(email == ''):
+                email = listaAlumnos[posicionBusqueda].get('email')
+                
+            celular = input('NUEVO CELULAR : ')
+            if(celular == ''):
+                celular = listaAlumnos[posicionBusqueda].get('celular')
+                
+            dicAlumnoEditar = {
+                'nombre':nombre,
+                'email':email,
+                'celular':celular
+            }
+            #actualizamos el diccionario en la lista
+            listaAlumnos[posicionBusqueda] = dicAlumnoEditar
+            print('ALUMNO ACTUALIZADO !!!')
     elif(opcion == "4"):
         print("[4] ELIMINAR ALUMNO")
     elif(opcion == "5"):
