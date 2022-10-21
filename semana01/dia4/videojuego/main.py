@@ -76,6 +76,14 @@ while True:
             
     #mover la bolita
     bolita.update()
+    
+    ### colisiones
+    #colisión de la bolita con el jugador
+    if pygame.sprite.collide_rect(bolita,jugador):
+        bolita.speed[1] = -bolita.speed[1]
+    
+    
+    
     #pintar la pantalla
     pantalla.fill(FONDO)
     #dibujamos los elementos del videjuego
