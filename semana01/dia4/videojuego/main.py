@@ -49,6 +49,31 @@ class Paleta(pygame.sprite.Sprite):
             self.speed = [0,0]
             
         self.rect.move_ip(self.speed)
+        
+class Ladrillo(pygame.sprite.Sprite):
+    def __init__(self,posicion):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('imagenes/ladrillo.png')
+        self.rect = self.image.get_rect()
+        self.rect.topleft = posicion
+        
+class Muro(pygame.sprite.Group):
+    def __init__(self,cantidad):
+        pygame.sprite.Group.__init__(self)
+        
+        pos_x = 0
+        pos_y = 20
+        
+        for i in range(cantidad):
+            ladrillo = Ladrillo((pos_x,pos_y))
+            self.add(ladrillo)
+            
+            pos_x += ladrillo.rect.width
+            if pos_x >= ANCHO:
+                pos_x = 0
+                pos_y += ladrillo.rect.height
+        
+    
 ######################################
 
 #creamos la pantalla del videojuego
@@ -64,9 +89,11 @@ pygame.key.set_repeat(30)
 #creamos los objetos del videojuego
 bolita = Bolita()
 jugador = Paleta()
+muro = Muro(50)
 
 #cargamos sonidos del videojuego
 sonido_colision = pygame.mixer.Sound('sonidos/colision.ogg')
+sonido_colision_muro = pygame.mixer.Sound('sonidos/colision_muro.ogg')
 
 
 while True:
@@ -88,6 +115,13 @@ while True:
     if pygame.sprite.collide_rect(bolita,jugador):
         bolita.speed[1] = -bolita.speed[1]
         pygame.mixer.Sound.play(sonido_colision)
+        
+    #colisión de bolita con el muro
+    lista = pygame.sprite.spritecollide(bolita,muro,False)
+    if lista:
+        ladrillo = lista[0]
+        muro.remove(ladrillo)
+        pygame.mixer.Sound.play(sonido_colision_muro)
     
     
     
@@ -96,5 +130,6 @@ while True:
     #dibujamos los elementos del videjuego
     pantalla.blit(bolita.image,bolita.rect)
     pantalla.blit(jugador.image,jugador.rect)
+    muro.draw(pantalla)
         
     pygame.display.flip()
