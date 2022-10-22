@@ -120,6 +120,17 @@ while True:
     lista = pygame.sprite.spritecollide(bolita,muro,False)
     if lista:
         ladrillo = lista[0]
+        
+        #hacer que la bolita rebote al chocar con el ladrillo
+        cx = bolita.rect.centerx
+        print(cx)
+        print(ladrillo.rect.left)
+        print(ladrillo.rect.right)
+        if cx < ladrillo.rect.left or cx > ladrillo.rect.right:
+            bolita.speed[0] = -bolita.speed[0]
+        else:
+            bolita.speed[1] = -bolita.speed[1]
+        
         muro.remove(ladrillo)
         pygame.mixer.Sound.play(sonido_colision_muro)
     
