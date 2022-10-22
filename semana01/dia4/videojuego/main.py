@@ -5,6 +5,8 @@ ANCHO = 640
 ALTO = 480
 FONDO = (0,0,64)
 
+pygame.init()
+
 ### CLASES DEL VIDEOJUEGO###########
 class Bolita(pygame.sprite.Sprite):
     
@@ -63,6 +65,10 @@ pygame.key.set_repeat(30)
 bolita = Bolita()
 jugador = Paleta()
 
+#cargamos sonidos del videojuego
+sonido_colision = pygame.mixer.Sound('sonidos/colision.ogg')
+
+
 while True:
     #establecer el tiempo del reloj
     reloj.tick(60)
@@ -81,6 +87,7 @@ while True:
     #colisión de la bolita con el jugador
     if pygame.sprite.collide_rect(bolita,jugador):
         bolita.speed[1] = -bolita.speed[1]
+        pygame.mixer.Sound.play(sonido_colision)
     
     
     
