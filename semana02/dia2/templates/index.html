@@ -14,7 +14,7 @@
     <div class="container">
       <nav class="navbar navbar-light" style="background-color: #7c8bac;">
         {% for p in pokemon %}
-          <a class="navbar-brand" href="#">{{p}}</a>
+          <a class="navbar-brand" href="/?nombre={{p}}">{{p}}</a>
         {% endfor %}
       </nav>
       {% if nombre != "no hay nombre" %}

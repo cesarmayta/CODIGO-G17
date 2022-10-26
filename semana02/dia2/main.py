@@ -25,7 +25,7 @@ def mostrarMensaje():
 
 @app.route('/')
 def index():
-    listaPokemon = ['pikachu','Charmander','Snorlax','Bulbasaur']
+    listaPokemon = ['pikachu','charmander','snorlax','bulbasaur']
     nombreRequest = request.args.get('nombre','no hay nombre')
     imagenPokemon = 'https://image.shutterstock.com/image-vector/image-not-found-grayscale-photo-260nw-1737334631.jpg'
     if(nombreRequest != 'no hay nombre'):
@@ -34,7 +34,13 @@ def index():
             sprites = dataPokemon['sprites']
             imagenPokemon = sprites['front_default']
     
-    return render_template('index.html',nombre=nombreRequest,pokemon=listaPokemon,imagen=imagenPokemon)
+    context = {
+        "nombre":nombreRequest,
+        "pokemon":listaPokemon,
+        "imagen":imagenPokemon
+    }
+    
+    return render_template('index.html',**context)
 
 @app.route('/peliculas')
 def peliculas():
