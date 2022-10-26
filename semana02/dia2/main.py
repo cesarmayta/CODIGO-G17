@@ -48,5 +48,24 @@ def peliculas():
     
     return render_template('peliculas.html',peliculas=listaPeliculas)
 
+
+@app.route('/pokedex')
+def pokedex():
+    totalPokemon = request.args.get('t','10')
+    listaPokemon = []
+    for pokemon in range(1,int(totalPokemon) + 1,1):
+        dataPokemon = consultarPokedApi(str(pokemon))
+        sprites = dataPokemon['sprites']
+        formPokemon = dataPokemon['forms']
+        nombre = formPokemon[0]['name']
+        imagen = sprites['front_default']
+        dicPokemon = {
+            'nombre':nombre,
+            'imagen':imagen
+        }
+        listaPokemon.append(dicPokemon)
+    print(listaPokemon)
+    return render_template('pokedex.html',pokemon=listaPokemon)
+
 #desplegamos el servidor web
 app.run(debug=True)
