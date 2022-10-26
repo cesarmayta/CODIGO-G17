@@ -11,8 +11,13 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Hola {{nombre}}</h1>
-
+    <div class="container">
+      <nav class="navbar navbar-light" style="background-color: #7c8bac;">
+        {% for p in pokemon %}
+          <a class="navbar-brand" href="#">{{p}}</a>
+        {% endfor %}
+      </nav>
+    </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

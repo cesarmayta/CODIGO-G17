@@ -9,8 +9,10 @@ def mostrarMensaje():
 
 @app.route('/')
 def index():
-    nombreRequest = request.args.get('nombre','no hay nombre')
-    return render_template('index.html',nombre=nombreRequest)
+    listaPokemon = ['pikachu','Charmander','Snorlax','Bulbasaur']
+    #nombreRequest = request.args.get('nombre','no hay nombre')
+    
+    return render_template('index.html',pokemon=listaPokemon)
 
 #desplegamos el servidor web
 app.run(debug=True)
