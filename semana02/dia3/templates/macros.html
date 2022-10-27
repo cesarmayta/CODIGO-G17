@@ -1,0 +1,10 @@
+{% macro mostrar_oferta(oferta) %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">{{oferta['titulo']}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{oferta['empresa']}}</h6>
+        <p class="card-text">{{oferta['descripcion']}}</p>
+        <a href="{{oferta['url']}}" class="card-link">VER DETALLE</a>
+        </div>
+    </div>
+{% endmacro %}
