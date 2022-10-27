@@ -11,7 +11,9 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">PYTHON</a>
+    {% for m in menu %}
+        <a class="navbar-brand" href="#">{{m}}</a>
+    {% endfor %}
     <form class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>

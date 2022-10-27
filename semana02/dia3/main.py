@@ -1,5 +1,9 @@
 from flask import Flask,request,render_template
 
+from libOfertas import OfertaCompuTrabajo
+
+
+
 app = Flask(__name__)
 
 listaOfertas = [
@@ -17,15 +21,31 @@ listaOfertas = [
     }
 ]
 
+listaMenu = ['PYTHON','REACT','FRONTEND','BACKEND']
+
 @app.route('/')
 def index():
     context = {
-        'ofertas':listaOfertas
+        'ofertas':listaOfertas,
+        'menu':listaMenu
+    }
+    return render_template('index.html',**context)
+
+@app.route('/busqueda')
+def busqueda():
+    valorBusqueda = request.args.get('tipo','python')
+    compuTrabajo = OfertaCompuTrabajo()
+    listaOfertasCompuTrabajo = compuTrabajo.obtenerOfertas(valorBusqueda)
+    
+    context = {
+        'ofertas':listaOfertasCompuTrabajo,
+        'menu':listaMenu
     }
     return render_template('index.html',**context)
 
 @app.route('/detalle')
 def detalleOferta():
+    
     return render_template('detalle.html')
 
 
