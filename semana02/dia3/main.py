@@ -21,7 +21,7 @@ listaOfertas = [
     }
 ]
 
-listaMenu = ['PYTHON','REACT','FRONTEND','BACKEND']
+listaMenu = ['python','react','frontend','backend']
 
 @app.route('/')
 def index():
