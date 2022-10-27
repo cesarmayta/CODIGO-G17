@@ -1,4 +1,25 @@
 {% extends 'layout.html' %}
+{% block titulo %}
+    <title>Pagina Principal</title>
+{% endblock %}
 {% block contenido %}
-<h1>PAGINA PRINCIPAL</h1>
+    
+    <div class="container">
+        <h1>PAGINA PRINCIPAL</h1>
+        <div class="row">
+        {% for oferta in ofertas %}
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">{{oferta['titulo']}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{oferta['empresa']}}</h6>
+                <p class="card-text">{{oferta['descripcion']}}</p>
+                <a href="{{oferta['url']}}" class="card-link">VER DETALLE</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}
