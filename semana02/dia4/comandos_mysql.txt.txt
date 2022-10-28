@@ -19,8 +19,10 @@ use ofertas_laborales;
 
 create table oferta(
 	titulo VARCHAR(100),
-	empresa VARCHAR(200
+	empresa VARCHAR(200)
 );
 
+#para modificar la estructura de una tabla
+ALTER TABLE oferta ADD COLUMN descripcion TEXT;
 
 
