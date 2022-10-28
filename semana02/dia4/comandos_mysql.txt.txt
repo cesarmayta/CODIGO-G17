@@ -1,0 +1,13 @@
+# para acceder a mysql
+
+mysql -h localhost -u root -p
+nota: te pedira contraseña lo dejas en blanco y presionas enter
+
+# para ver las basedatos
+
+show databases;
+
+#para crear una base de datos
+
+create database ofertas_laborales;
+
