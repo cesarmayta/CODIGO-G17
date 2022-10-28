@@ -11,3 +11,16 @@ show databases;
 
 create database ofertas_laborales;
 
+#para ingresar a una base de datos
+
+use ofertas_laborales;
+
+#para crear una tabla
+
+create table oferta(
+	titulo VARCHAR(100),
+	empresa VARCHAR(200
+);
+
+
+
