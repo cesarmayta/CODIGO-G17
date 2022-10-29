@@ -26,3 +26,11 @@ create table oferta(
 ALTER TABLE oferta ADD COLUMN descripcion TEXT;
 
 
+
+agregar un campo llamado url tipo varchar de 255 a la tabla oferta
+
+ALTER TABLE oferta ADD COLUMN id INT NOT NULL FIRST;
+
+ALTER TABLE oferta MODIFY COLUMN id INT NOT NULL PRIMARY KEY AUTO_INCREMENT;
+
+
