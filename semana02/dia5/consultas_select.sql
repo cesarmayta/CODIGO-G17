@@ -18,4 +18,15 @@ select pais,count(*) as cantidad,
 max((YEAR(CURRENT_DATE()) - YEAR(fecha_nacimiento))) as edad_maxima
 from postulante
 GROUP BY pais
-HAVING count(*) >= 100
+HAVING count(*) >= 100;
+
+
+select round(avg((YEAR(CURRENT_DATE()) - YEAR(fecha_nacimiento))))
+from postulante;
+
+select nombre,pais
+from postulante
+where 
+(YEAR(CURRENT_DATE()) - YEAR(fecha_nacimiento)) > 
+(select round(avg((YEAR(CURRENT_DATE()) - YEAR(fecha_nacimiento))))
+from postulante)
