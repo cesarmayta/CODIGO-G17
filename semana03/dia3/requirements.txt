@@ -2,6 +2,6 @@
 flask
 
 #extensiones de flask
-flask-mysql
+flask-mysqldb
 
 #otras librerias

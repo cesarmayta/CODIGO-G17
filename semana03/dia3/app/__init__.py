@@ -4,7 +4,6 @@ from flask import Flask
 from .portal import portal
 from .postulante import postulante
 
-
 def create_app():
     app = Flask(__name__)
     

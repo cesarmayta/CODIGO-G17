@@ -53,8 +53,8 @@
 <header class="main-header header-2 fixed-header">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand logo pad-0" href="index.html">
-                <img src="img/logos/black-logo.png" alt="logo">
+            <a class="navbar-brand logo pad-0" href="/">
+                <img src="{{ url_for('static',filename='img/logos/black-logo.png') }}" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -127,7 +127,7 @@
             <div class="col-lg-3 col-md-12 col-sm-12 col-pad">
                 <div class="dashboard-nav d-none d-xl-block d-lg-block">
                     <div class="dashboard-inner">
-                        <h4>Main</h4>
+                        <h4>Principal</h4>
                         <ul>
                             <li><a href="dashboard.html"><i class="flaticon-dashboard"></i>Dashboard</a></li>
                             <li><a href="add-resume.html"><i class="flaticon-portfolio"></i>Add Resume</a></li>
@@ -139,7 +139,7 @@
                             <li><a href="change-password.html"><i class="flaticon-lock"></i>Change Password</a></li>
                         </ul>
 
-                        <h4>Account</h4>
+                        <h4>Mi cuenta</h4>
                         <ul>
                             <li class="active"><a href="edit-profile.html"><i class="flaticon-user"></i>Edit Profile</a></li>
                             <li><a href="index.html"><i class="flaticon-logout"></i>Logout</a></li>

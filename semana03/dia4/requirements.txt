@@ -1,7 +1,6 @@
 #framework principal
 flask
-
 #extensiones de flask
-mysql-connector-python
 
 #otras librerias
+mysql-connector-python
