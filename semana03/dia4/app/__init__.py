@@ -1,4 +1,7 @@
 from flask import Flask
+from flask_bootstrap import Bootstrap4
+
+from .config import Config
 
 #conexion a base de datos
 from app.mysql_conn import MysqlDb
@@ -13,6 +16,10 @@ from .admin import admin
 
 def create_app():
     app = Flask(__name__)
+    
+    bootstrap = Bootstrap4(app)
+    
+    app.config.from_object(Config)
     
     app.register_blueprint(portal)
     app.register_blueprint(postulante)

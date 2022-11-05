@@ -1,5 +1,4 @@
 {% extends 'admin/layout.html' %}
-{% from 'bootstrap4/form.html' import render_form %}
 {% block content %}
 <div class="submit-address dashboard-list">
         <h4>Areas</h4>
@@ -14,21 +13,16 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for area in areas %}
+                      {% for modalidad in modalidades %}
                       <tr>
-                        <th scope="row">{{area['id']}}</th>
-                        <td>{{area['descripcion']}}</td>
+                        <th scope="row">{{modalidad['id']}}</th>
+                        <td>{{modalidad['descripcion']}}</td>
                         <td>...</td>
                       </tr>
                       {% endfor %}
                     </tbody>
                   </table>
             </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            {{render_form(form)}}
-          </div>
         </div>
 </div>
 {% endblock %}
