@@ -11,16 +11,27 @@ from .forms import AreaForm
 def index():
     return render_template('admin/index.html')
 
-@admin.route('/area')
+@admin.route('/area',methods=['GET','POST'])
 def area():
+    
+    #formulario de Area
+    area_form = AreaForm()
+    
+    #validar si se envio el formulario
+    if area_form.validate_on_submit():
+        #registramos la nueva area
+        areaDescripcion = area_form.descripcion.data
+        cursorInsert = dbConn.cursor()
+        cursorInsert.execute("insert into tbl_area(area_descripcion) values ('"+areaDescripcion+"')")
+        dbConn.commit()
+        
+        cursorInsert.close()
+    
     cursor = dbConn.cursor(dictionary=True)
     cursor.execute('select area_id as id,area_descripcion as descripcion from tbl_area')
     data = cursor.fetchall()
     print(data)
     cursor.close()
-    
-    #formulario de Area
-    area_form = AreaForm()
     
     context = {
         'areas':data,
