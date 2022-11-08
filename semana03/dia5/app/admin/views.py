@@ -5,7 +5,7 @@ from . import admin
 from app import dbConn
 
 #formularios
-from .forms import AreaForm
+from .forms import AreaForm,NivelForm
 
 @admin.route('/')
 def index():
@@ -53,15 +53,29 @@ def modalidad():
     
     return render_template('admin/modalidad.html',**context)
 
-@admin.route('/nivel')
+@admin.route('/nivel',methods=['GET','POST'])
 def nivel():
+    #CREAMOS FORMULARIO
+    nivel_form = NivelForm()
+    
+    #validar si se envio el formulario
+    if nivel_form.validate_on_submit():
+        #registramos la nueva area
+        descripcionData = nivel_form.descripcion.data
+        cursorInsert = dbConn.cursor()
+        cursorInsert.execute("insert into tbl_nivel(nivel_descripcion) values ('"+descripcionData+"')")
+        dbConn.commit()
+        
+        cursorInsert.close()
+    
     cursor = dbConn.cursor(dictionary=True)
     cursor.execute('select nivel_id as id,nivel_descripcion as descripcion from tbl_nivel')
     data = cursor.fetchall()
     cursor.close()
     
     context = {
-        'niveles':data
+        'niveles':data,
+        'form':nivel_form
     }
     
     return render_template('admin/nivel.html',**context)

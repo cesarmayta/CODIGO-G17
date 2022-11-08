@@ -1,6 +1,12 @@
 {% extends 'admin/layout.html' %}
+{% from 'bootstrap4/form.html' import render_form %}
 {% import 'admin/macros.html' as macros %}
 {% block content %} 
     <h1>Lista de niveles</h1>
     {{macros.mostrar_tabla(niveles)}}
+    <div class="row">
+        <div class="col-lg-12">
+          {{render_form(form)}}
+        </div>
+      </div>
 {% endblock %}
