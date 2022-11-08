@@ -5,7 +5,7 @@ from . import admin
 from app import dbConn
 
 #formularios
-from .forms import AreaForm,NivelForm,ModalidadForm
+from .forms import AreaForm,NivelForm,ModalidadForm,OfertaForm
 
 @admin.route('/')
 def index():
@@ -142,6 +142,16 @@ def modalidadDetalle(id=''):
 
     return render_template('admin/modalidad.html',**context)
 
+@admin.route('/modalidad/<id>/eliminar')
+def eliminarModalidad(id=''):
+    
+    cursorDelete = dbConn.cursor()
+    cursorDelete.execute('delete from tbl_modalidad where modalidad_id='+id)
+    dbConn.commit
+    cursorDelete.close()
+    
+    return redirect(url_for('admin.modalidad'))
+
 ############################ NIVELES ################################
 @admin.route('/nivel',methods=['GET','POST'])
 def nivel():
@@ -169,3 +179,15 @@ def nivel():
     }
     
     return render_template('admin/nivel.html',**context)
+
+############################ OFERTAS LABORALES
+@admin.route('/nuevaoferta',methods=['GET','POST'])
+def nuevaOferta():
+    
+    oferta_form = OfertaForm()
+    
+    context ={
+        'form':oferta_form
+    }
+    
+    return render_template('admin/oferta.html',**context)

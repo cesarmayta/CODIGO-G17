@@ -1,0 +1,12 @@
+{% extends 'admin/layout.html' %}
+{% from 'bootstrap4/form.html' import render_form %}
+{% block content %}
+<div class="submit-address dashboard-list"></div>
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Ingreso de Nueva Oferta</h1>
+         {{render_form(form)}}
+    </div>
+  </div>
+</div>
+{% endblock %}
