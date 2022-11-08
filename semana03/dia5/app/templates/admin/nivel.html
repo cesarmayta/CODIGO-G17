@@ -1,6 +1,6 @@
-<h1>Lista de niveles</h1>
-<ul>
-    {% for nivel in niveles %}
-        <li>{{nivel['descripcion']}}</li>
-    {% endfor %}
-</ul>
+{% extends 'admin/layout.html' %}
+{% import 'admin/macros.html' as macros %}
+{% block content %} 
+    <h1>Lista de niveles</h1>
+    {{macros.mostrar_tabla(niveles)}}
+{% endblock %}

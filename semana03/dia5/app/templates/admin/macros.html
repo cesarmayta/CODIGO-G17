@@ -1,0 +1,20 @@
+{% macro  mostrar_tabla(listaDatos) %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dicDato in listaDatos %}
+      <tr>
+        <th scope="row">{{dicDato['id']}}</th>
+        <td>{{dicDato['descripcion']}}</td>
+        <td>...</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endmacro %}
