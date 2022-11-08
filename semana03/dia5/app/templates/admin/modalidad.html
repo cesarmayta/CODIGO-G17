@@ -1,0 +1,28 @@
+{% extends 'admin/layout.html' %}
+{% block content %}
+<div class="submit-address dashboard-list">
+        <h4>Areas</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for modalidad in modalidades %}
+                      <tr>
+                        <th scope="row">{{modalidad['id']}}</th>
+                        <td>{{modalidad['descripcion']}}</td>
+                        <td>...</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+</div>
+{% endblock %}

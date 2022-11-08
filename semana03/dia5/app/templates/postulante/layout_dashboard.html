@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>SMARTDEVS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <!-- External CSS libraries -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/animate.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap-submenu.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/magnific-popup.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/leaflet.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/map.css') }}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/flaticon/font/flaticon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/linearicons/style.css') }}">
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='css/dropzone.css') }}">
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='css/slick.css') }}">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" id="style_sheet" href="{{ url_for('static',filename='css/skins/midnight-blue.css') }}">
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="{{ url_for('static',filename='img/favicon.ico') }}" type="image/x-icon">
+
+    <!-- Google fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,300,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Dosis%7CMontserrat:200,300,400,500,600,700,800,900%7CNunito+Sans:200,300,400,600,700,800,900">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/ie10-viewport-bug-workaround.css') }}">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script  src="{{ url_for('static',filename='js/ie-emulation-modes-warning.js') }}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script  src="js/html5shiv.min.js"></script>
+    <script  src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="bg-grea">
+<div class="page_loader"></div>
+
+<!-- Main header start -->
+<header class="main-header header-2 fixed-header">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand logo pad-0" href="/">
+                <img src="{{ url_for('static',filename='img/logos/black-logo.png') }}" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto d-lg-none d-xl-none">
+                    <li class="nav-item dropdown">
+                        <a href="dashboard.html" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a href="add-resume.html" class="nav-link">Add Resume</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="bookmark.html" class="nav-link">Bookmark</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="applied.html" class="nav-link">Applied</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="alerts.html" class="nav-link">Alerts</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="messages.html" class="nav-link">Messages</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="transaction.html" class="nav-link">Transaction</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="change-password.html" class="nav-link">Change Password</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="edit-profile.html" class="nav-link">Edit Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html" class="nav-link">Logout</a>
+                    </li>
+                </ul>
+                <div class="navbar-buttons ml-auto d-none d-xl-block d-lg-block">
+                    <ul>
+                        <li>
+                            <div class="dropdown btns">
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="http://placehold.it/60x60" alt="avatar">
+                                    Hi, John
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="dashboard.html">Dashboard</a>
+                                    <a class="dropdown-item" href="messages.html">Messages</a>
+                                    <a class="dropdown-item" href="bookmark.html">Bookmark</a>
+                                    <a class="dropdown-item" href="edit-profile.html">Edit profile</a>
+                                    <a class="dropdown-item" href="index.html">Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="employer-dashboard-post-job.html" class="btn btn-theme btn-md"><i class="flaticon-plus"></i> Post a Job</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- Main header end -->
+
+<!-- Dashbord start -->
+<div class="dashboard">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-pad">
+                <div class="dashboard-nav d-none d-xl-block d-lg-block">
+                    <div class="dashboard-inner">
+                        <h4>Principal</h4>
+                        <ul>
+                            <li><a href="dashboard.html"><i class="flaticon-dashboard"></i>Dashboard</a></li>
+                            <li><a href="add-resume.html"><i class="flaticon-portfolio"></i>Add Resume</a></li>
+                            <li><a href="bookmark.html"><i class="flaticon-heart"></i>Bookmark</a></li>
+                            <li><a href="applied.html"><i class="flaticon-safe"></i>Applied</a></li>
+                            <li><a href="alerts.html"><i class="flaticon-alert"></i>Alert</a></li>
+                            <li><a href="messages.html"><i class="flaticon-mail"></i>Messages<span class="nav-tag">6</span></a></li>
+                            <li><a href="transaction.html"><i class="flaticon-buy"></i>Transaction</a></li>
+                            <li><a href="change-password.html"><i class="flaticon-lock"></i>Change Password</a></li>
+                        </ul>
+
+                        <h4>Mi cuenta</h4>
+                        <ul>
+                            <li class="active"><a href="edit-profile.html"><i class="flaticon-user"></i>Edit Profile</a></li>
+                            <li><a href="index.html"><i class="flaticon-logout"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12 col-pad">
+                <div class="content-area5">
+                    {% block content %} 
+                    {% endblock %}
+                    <p class="sub-banner-2 text-center">© 2019 Theme Vessel. Trademarks and brands are the property of their respective owners.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Dashbord end -->
+
+<!-- Full Page Search -->
+<div id="full-page-search">
+    <button type="button" class="close">×</button>
+    <form action="index.html#">
+        <input type="search" value="" placeholder="type keyword(s) here" />
+        <button type="submit" class="btn btn-sm button-theme">Search</button>
+    </form>
+</div>
+
+<!-- Full Page Search -->
+<div id="full-page-search">
+    <button type="button" class="close">×</button>
+    <form action="index.html#">
+        <input type="search" value="" placeholder="type keyword(s) here" />
+        <button type="submit" class="btn btn-sm button-theme">Search</button>
+    </form>
+</div>
+
+<script src="{{ url_for('static',filename='js/jquery-2.2.0.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/bootstrap-submenu.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/rangeslider.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/jquery.mb.YTPlayer.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/bootstrap-select.min.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/jquery.easing.1.3.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/jquery.scrollUp.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/leaflet.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/leaflet-providers.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/leaflet.markercluster.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/moment.min.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/daterangepicker.min.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/dropzone.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/slick.min.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/jquery.filterizr.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/jquery.magnific-popup.min.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/jquery.countdown.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/maps.js') }}"></script>
+<script  src="{{ url_for('static',filename='js/app.js') }}"></script>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script  src="{{ url_for('static',filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+<!-- Custom javascript -->
+<script  src="{{ url_for('static',filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+</body>
+</html>

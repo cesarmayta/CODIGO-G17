@@ -1,0 +1,9 @@
+#framework principal
+flask
+
+#extensiones de flask
+Flask-WTF
+bootstrap-flask
+
+#otras librerias
+mysql-connector-python
