@@ -3,9 +3,13 @@ from wtforms.validators import DataRequired
 from wtforms.fields import StringField,SubmitField
 
 class AreaForm(FlaskForm):
-    descripcion = StringField('Nueva Area',validators=[DataRequired()])
+    descripcion = StringField('Area',validators=[DataRequired()])
     submit = SubmitField('Guardar')
     
 class NivelForm(FlaskForm):
-    descripcion = StringField('Nuevo Nivel',validators=[DataRequired()])
+    descripcion = StringField('Nivel',validators=[DataRequired()])
+    submit = SubmitField('Guardar')
+    
+class ModalidadForm(FlaskForm):
+    descripcion = StringField('Modalidad',validators=[DataRequired()])
     submit = SubmitField('Guardar')

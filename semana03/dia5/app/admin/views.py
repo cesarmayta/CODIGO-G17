@@ -5,7 +5,7 @@ from . import admin
 from app import dbConn
 
 #formularios
-from .forms import AreaForm,NivelForm
+from .forms import AreaForm,NivelForm,ModalidadForm
 
 @admin.route('/')
 def index():
@@ -72,21 +72,77 @@ def areaDetalle(id=''):
 
     return render_template('admin/area.html',**context)
     
+@admin.route('/area/<id>/eliminar')
+def eliminarArea(id=''):
+    
+    cursorDelete = dbConn.cursor()
+    cursorDelete.execute('delete from tbl_area where area_id='+id)
+    dbConn.commit
+    cursorDelete.close()
+    
+    return redirect(url_for('admin.area'))
     
 ############################### MODALIDAD #############################
-@admin.route('/modalidad')
-def modalidad():
+@admin.route('/modalidad',methods=['GET','POST'])
+def modalidad(id=''):
+    
+    modalidad_form = ModalidadForm()
+    
+    #validar si se envio el formulario
+    if modalidad_form.validate_on_submit():
+        #registramos la nueva area
+        modalidadDescripcion = modalidad_form.descripcion.data
+        cursorInsert = dbConn.cursor()
+        cursorInsert.execute("insert into tbl_modalidad(modalidad_descripcion) values ('"+modalidadDescripcion+"')")
+        dbConn.commit()
+        
+        cursorInsert.close()
+    
     cursor = dbConn.cursor(dictionary=True)
     cursor.execute('select modalidad_id as id,modalidad_descripcion as descripcion from tbl_modalidad')
     data = cursor.fetchall()
     cursor.close()
     
     context = {
-        'modalidades':data
+        'modalidades':data,
+        'form':modalidad_form
     }
     
     return render_template('admin/modalidad.html',**context)
 
+@admin.route('/modalidad/<id>',methods=['GET','POST'])
+def modalidadDetalle(id=''):
+    cursorForm = dbConn.cursor(dictionary=True)
+    cursorForm.execute('select modalidad_descripcion as descripcion from tbl_modalidad where modalidad_id = ' + id)
+    dataCursor = cursorForm.fetchall()
+    
+    modalidad_form = ModalidadForm(data=dataCursor[0])
+    
+    #validar si se envio el formulario para actualizar
+    if modalidad_form.validate_on_submit():
+        #actualizamos el area
+        modalidadDescripcion = modalidad_form.descripcion.data
+        cursorUpdate = dbConn.cursor()
+        cursorUpdate.execute("update tbl_modalidad set modalidad_descripcion = '"+modalidadDescripcion+"' where modalidad_id = '"+id+"'")
+        dbConn.commit()
+        
+        cursorUpdate.close()
+        
+        return redirect(url_for('admin.modalidad'))
+    
+    cursor = dbConn.cursor(dictionary=True)
+    cursor.execute('select modalidad_id as id,modalidad_descripcion as descripcion from tbl_modalidad')
+    data = cursor.fetchall()
+    cursor.close()
+    
+    context = {
+        'modalidades':data,
+        'form':modalidad_form
+    }
+
+    return render_template('admin/modalidad.html',**context)
+
+############################ NIVELES ################################
 @admin.route('/nivel',methods=['GET','POST'])
 def nivel():
     #CREAMOS FORMULARIO
