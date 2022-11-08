@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect,url_for
 
 from . import admin
 
@@ -10,7 +10,7 @@ from .forms import AreaForm,NivelForm
 @admin.route('/')
 def index():
     return render_template('admin/index.html')
-
+############################ AREA #######################
 @admin.route('/area',methods=['GET','POST'])
 def area():
     
@@ -40,6 +40,40 @@ def area():
     
     return render_template('admin/area.html',**context)
 
+@admin.route('/area/<id>',methods=['GET','POST'])
+def areaDetalle(id=''):
+    cursorForm = dbConn.cursor(dictionary=True)
+    cursorForm.execute('select area_descripcion as descripcion from tbl_area where area_id = ' + id)
+    dataCursor = cursorForm.fetchall()
+    
+    area_form = AreaForm(data=dataCursor[0])
+    
+    #validar si se envio el formulario para actualizar
+    if area_form.validate_on_submit():
+        #actualizamos el area
+        areaDescripcion = area_form.descripcion.data
+        cursorUpdate = dbConn.cursor()
+        cursorUpdate.execute("update tbl_area set area_descripcion = '"+areaDescripcion+"' where area_id = '"+id+"'")
+        dbConn.commit()
+        
+        cursorUpdate.close()
+        
+        return redirect(url_for('admin.area'))
+    
+    cursor = dbConn.cursor(dictionary=True)
+    cursor.execute('select area_id as id,area_descripcion as descripcion from tbl_area')
+    data = cursor.fetchall()
+    cursor.close()
+    
+    context = {
+        'areas':data,
+        'form':area_form
+    }
+
+    return render_template('admin/area.html',**context)
+    
+    
+############################### MODALIDAD #############################
 @admin.route('/modalidad')
 def modalidad():
     cursor = dbConn.cursor(dictionary=True)

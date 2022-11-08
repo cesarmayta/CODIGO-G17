@@ -18,7 +18,10 @@
                       <tr>
                         <th scope="row">{{area['id']}}</th>
                         <td>{{area['descripcion']}}</td>
-                        <td>...</td>
+                        <td>
+                          <a href="/admin/area/{{area['id']}}" class="btn btn-primary">Editar</a>
+                          <a href="#" class="btn btn-danger">Eliminar</a>
+                        </td>
                       </tr>
                       {% endfor %}
                     </tbody>
