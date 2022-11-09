@@ -1,5 +1,6 @@
 from flask import Flask,jsonify,request
-from flask_sqlalchemy import SQLAlchemy 
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 
 
 app = Flask(__name__)
@@ -26,6 +27,13 @@ db.create_all()
 print('se creo la tabla alumno en base de datos')
 
 
+#CREAMOS ESQUEMAS PARA SERIALIZACIÓN DE DATOS
+ma = Marshmallow(app)
+class AlumnoSchema(ma.Schema):
+    class Meta:
+        fields = ('id','nombre','email')
+        
+        
 @app.route('/')
 def index():
     context = {
@@ -48,6 +56,33 @@ def setAlumno():
     context = {
         'status':True,
         'content':'alumno registrado'
+    }
+    
+    return jsonify(context)
+
+@app.route('/alumno',methods=['GET'])
+def getAlumno():
+    listaAlumnos = Alumno.query.all() #select * from alumno
+    
+    
+    #serializar datos
+    alumnos_schema = AlumnoSchema(many=True)
+    listaDictALumnos = alumnos_schema.dump(listaAlumnos)
+    
+    """listaDictALumnos = []
+    #serializamos los datos
+    for alumno in listaAlumnos:
+        dicAlumno = {
+            'nombre':alumno.nombre,
+            'email':alumno.email
+        }
+        listaDictALumnos.append(dicAlumno)"""
+    
+    #print(listaDictALumnos)
+    
+    context = {
+        'status':True,
+        'content':listaDictALumnos
     }
     
     return jsonify(context)
