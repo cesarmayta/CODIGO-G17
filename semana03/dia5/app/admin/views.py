@@ -210,9 +210,39 @@ def nuevaOferta():
         dbConn.commit()
         
         cursorInsert.close()
+        
+        return redirect(url_for('admin.oferta'))
     
     context ={
         'form':oferta_form
+    }
+    
+    return render_template('admin/nuevaoferta.html',**context)
+
+@admin.route('/oferta')
+def oferta():
+    cursor = dbConn.cursor(dictionary=True)
+    sqlSelect = """
+                select oferta.oferta_id as id,oferta.oferta_titulo as titulo,
+                ubicacion.ubicacion_ciudad as ciudad,
+                modalidad.modalidad_descripcion as modalidad,
+                area.area_descripcion as area,
+                periodo.periodo_descripcion as periodo,
+                nivel.nivel_descripcion as nivel
+                from tbl_oferta oferta
+                inner join tbl_ubicacion ubicacion on oferta.ubicacion_id = ubicacion.ubicacion_id
+                inner join tbl_modalidad modalidad on oferta.modalidad_id = modalidad.modalidad_id
+                inner join tbl_area area on oferta.area_id = area.area_id
+                inner join tbl_periodo periodo on oferta.periodo_id = periodo.periodo_id
+                inner join tbl_nivel nivel on oferta.nivel_id = nivel.nivel_id
+                """
+    cursor.execute(sqlSelect)
+    data = cursor.fetchall()
+    print(data)
+    cursor.close()
+    
+    context = {
+        'ofertas':data
     }
     
     return render_template('admin/oferta.html',**context)

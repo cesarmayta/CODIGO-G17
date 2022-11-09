@@ -1,12 +1,41 @@
 {% extends 'admin/layout.html' %}
-{% from 'bootstrap4/form.html' import render_form %}
 {% block content %}
-<div class="submit-address dashboard-list"></div>
-<div class="row">
-    <div class="col-lg-12">
-        <h1>Ingreso de Nueva Oferta</h1>
-         {{render_form(form)}}
-    </div>
-  </div>
+<div class="submit-address dashboard-list">
+        <h4>Ofertas</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="/admin/nuevaoferta" class="btn btn-success">NUEVA OFERTA</a>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Ciudad</th>
+                        <th scope="col">Modalidad</th>
+                        <th scope="col">Area</th>
+                        <th scope="col">Periodo</th>
+                        <th scope="col">Nivel</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for oferta in ofertas %}
+                      <tr>
+                        <th scope="row">{{oferta['id']}}</th>
+                        <td>{{oferta['titulo']}}</td>
+                        <td>{{oferta['ciudad']}}</td>
+                        <td>{{oferta['modalidad']}}</td>
+                        <td>{{oferta['area']}}</td>
+                        <td>{{oferta['periodo']}}</td>
+                        <td>{{oferta['nivel']}}</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Editar</a>
+                          <a href="#" class="btn btn-danger">Eliminar</a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
 </div>
 {% endblock %}
