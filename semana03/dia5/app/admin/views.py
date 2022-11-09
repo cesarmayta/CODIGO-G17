@@ -186,6 +186,31 @@ def nuevaOferta():
     
     oferta_form = OfertaForm()
     
+    if oferta_form.validate_on_submit():
+        #registramos la nueva area
+        tituloData = oferta_form.titulo.data
+        resumenData = oferta_form.resumen.data
+        detalleData = oferta_form.detalle.data
+        ubicacionData = oferta_form.ubicacion.data
+        modalidadData = oferta_form.modalidad.data
+        areaData = oferta_form.area.data
+        periodoData = oferta_form.periodo.data
+        nivelData = oferta_form.nivel.data
+        
+        sqlInsert = """insert into tbl_oferta
+                        (oferta_titulo,oferta_fec_pub,oferta_fec_fin,oferta_resumen,oferta_detalle,
+                        ubicacion_id,modalidad_id,area_id,periodo_id,nivel_id) 
+                       values ('"""+tituloData+"""',CURRENT_DATE(),CURRENT_DATE(),'"""+resumenData+"""'
+                       ,'"""+detalleData+"""','"""+ubicacionData+"""','"""+modalidadData+"""'
+                       ,'"""+areaData+"""','"""+periodoData+"""','"""+nivelData+"""')
+                    """
+        print(sqlInsert)
+        cursorInsert = dbConn.cursor()
+        cursorInsert.execute(sqlInsert)
+        dbConn.commit()
+        
+        cursorInsert.close()
+    
     context ={
         'form':oferta_form
     }
