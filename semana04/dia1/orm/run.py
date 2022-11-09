@@ -1,4 +1,4 @@
-from flask import Flask,jsonify
+from flask import Flask,jsonify,request
 from flask_sqlalchemy import SQLAlchemy 
 
 
@@ -32,6 +32,24 @@ def index():
         'status':True,
         'content':'Bienvenido a mi api rest con flask y sqlalchemy'
     }
+    return jsonify(context)
+
+@app.route('/alumno',methods=['POST'])
+def setAlumno():
+    nombre = request.json['nombre']
+    email = request.json['email']
+    
+    #insertamos el registro en la tabla alumno usando el orm
+    #insert into alumno(nombre,email) values ('nombre','email)
+    nuevoAlumno = Alumno(nombre,email)
+    db.session.add(nuevoAlumno)
+    db.session.commit()
+    
+    context = {
+        'status':True,
+        'content':'alumno registrado'
+    }
+    
     return jsonify(context)
 
 if __name__ == "__main__":
