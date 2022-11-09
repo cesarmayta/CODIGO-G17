@@ -2,11 +2,18 @@ from flask import Flask,jsonify,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
+from dotenv import load_dotenv
+import os
+from os.path import join,dirname
+
+
+dotenv_path = join(dirname(__file__),'.env')
+load_dotenv(dotenv_path)
 
 app = Flask(__name__)
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/db_api'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI')
 app.app_context().push()
 #configuramos sql alchemy
 db = SQLAlchemy(app)
