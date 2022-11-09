@@ -10,6 +10,30 @@ def obtenerUbicaciones():
     data = cursor.fetchall()
     return data
 
+def obtenerModalidades():
+    cursor = dbConn.cursor()
+    cursor.execute("select modalidad_id as id,modalidad_descripcion as descripcion from tbl_modalidad")
+    data = cursor.fetchall()
+    return data
+
+def obtenerAreas():
+    cursor = dbConn.cursor()
+    cursor.execute("select area_id as id,area_descripcion as descripcion from tbl_area")
+    data = cursor.fetchall()
+    return data
+
+def obtenerPeriodos():
+    cursor = dbConn.cursor()
+    cursor.execute("select periodo_id as id,periodo_descripcion as descripcion from tbl_periodo")
+    data = cursor.fetchall()
+    return data
+
+def obtenerNiveles():
+    cursor = dbConn.cursor()
+    cursor.execute("select nivel_id as id,nivel_descripcion as descripcion from tbl_nivel")
+    data = cursor.fetchall()
+    return data
+
 class AreaForm(FlaskForm):
     descripcion = StringField('Area',validators=[DataRequired()])
     submit = SubmitField('Guardar')
@@ -27,3 +51,8 @@ class OfertaForm(FlaskForm):
     resumen = TextAreaField('Resumen',validators=[DataRequired()])
     detalle = TextAreaField('Detalle',validators=[DataRequired()])
     ubicacion = SelectField('Ciudad', choices=obtenerUbicaciones())
+    modalidad = SelectField('Modalidad',choices=obtenerModalidades())
+    area = SelectField('Area',choices=obtenerAreas())
+    periodo = SelectField('Periodo',choices=obtenerPeriodos())
+    nivel = SelectField('Nivel',choices=obtenerNiveles())
+    submit = SubmitField('Guardar')

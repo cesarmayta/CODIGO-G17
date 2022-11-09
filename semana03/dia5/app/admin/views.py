@@ -147,7 +147,7 @@ def eliminarModalidad(id=''):
     
     cursorDelete = dbConn.cursor()
     cursorDelete.execute('delete from tbl_modalidad where modalidad_id='+id)
-    dbConn.commit
+    dbConn.commit()
     cursorDelete.close()
     
     return redirect(url_for('admin.modalidad'))
