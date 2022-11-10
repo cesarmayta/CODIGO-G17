@@ -1,2 +1,5 @@
 flask
 python-dotenv
+flask-sqlalchemy
+flask-marshmallow
+mysqlclient
