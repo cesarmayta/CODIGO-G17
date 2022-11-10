@@ -1,5 +1,6 @@
 from flask import Flask,jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 
 ## importación de blueprints
 from .blueprints.ofertas import ofertas
@@ -10,10 +11,14 @@ app = Flask(__name__)
 
 
 app.config.from_object(Config)
-app.app_context().push()
 
-db = SQLAlchemy(app)
 
+db = SQLAlchemy()
+#ma = Marshmallow(app)
+
+#app.app_context().push()
+
+#db.init_app(app)
 
 #registramos blueprints
 app.register_blueprint(ofertas)
