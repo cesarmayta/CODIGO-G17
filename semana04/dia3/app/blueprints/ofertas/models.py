@@ -13,3 +13,8 @@ class TblModalidad(db.Model):
     
     def __init__(self,descripcion):
         self.modalidad_descripcion = descripcion
+        
+Nivel = db.Table('tbl_nivel',db.metadata,
+                 db.Column('nivel_id',db.Integer,primary_key=True),
+                 db.Column('nivel_descripcion',db.String)
+)

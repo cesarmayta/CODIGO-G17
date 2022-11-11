@@ -1,9 +1,10 @@
 from flask import jsonify,url_for,redirect,request
 
 
-from .models import TblArea,TblModalidad
-from .schemas import AreaSchema,ModalidadSchema
+from .models import TblArea,TblModalidad,Nivel
+from .schemas import AreaSchema,ModalidadSchema,NivelSchema
 
+from utils.db import db
 
 class OfertaLaboralController:
     
@@ -44,3 +45,20 @@ class ModalidadController:
         }
         
         return jsonify(context)
+    
+class NivelController:
+    
+    def getNivel(self):
+        listaDatos = db.session.query(Nivel).all()
+        print(listaDatos)
+        
+        data_schema = NivelSchema(many=True)
+        
+        context = {
+            'status':True,
+            'content':data_schema.dump(listaDatos)
+        }
+        
+        return jsonify(context)
+        
+        

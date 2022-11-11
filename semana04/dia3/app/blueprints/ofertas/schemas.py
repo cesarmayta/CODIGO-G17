@@ -7,4 +7,8 @@ class AreaSchema(ma.Schema):
 class ModalidadSchema(ma.Schema):
     class Meta:
         fields = ('modalidad_id','modalidad_descripcion')
+        
+class NivelSchema(ma.Schema):
+    class Meta:
+        fields = ('nivel_id','nivel_descripcion')
 
