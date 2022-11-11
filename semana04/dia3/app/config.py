@@ -7,5 +7,6 @@ dotenv_path = join(dirname(__file__),'.env')
 load_dotenv(dotenv_path)
 
 class Config:
-    SQLALCHEMY_DATABASE_URI= 'mysql://root:@localhost/db_smartdevs'
+    #mysql://usuario:contraseña@servidor:puerto/basedatos
+    SQLALCHEMY_DATABASE_URI= 'mysql://root:@localhost:3306/db_smartdevs'
     SQLALCHEMY_TRACK_MODIFICATIONS= False

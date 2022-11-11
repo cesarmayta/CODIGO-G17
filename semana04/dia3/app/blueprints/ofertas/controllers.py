@@ -1,8 +1,8 @@
 from flask import jsonify,url_for,redirect,request
 
 
-from .models import TblArea
-from .schemas import AreaSchema
+from .models import TblArea,TblModalidad
+from .schemas import AreaSchema,ModalidadSchema
 
 
 class OfertaLaboralController:
@@ -19,13 +19,28 @@ class OfertaLaboralController:
 class AreaController:
     
     def getArea(self):
-        listaAreas = TblArea.query.all()
+        listaAreas = TblArea.query.all() # select * from tbl_area
         print(listaAreas)
         area_schema = AreaSchema(many=True)
         
         context = {
             'status':True,
             'content':area_schema.dump(listaAreas)
+        }
+        
+        print(context)
+        
+        return jsonify(context)
+    
+class ModalidadController:
+    
+    def getModalidad(self):
+        listaDatos = TblModalidad.query.all()
+        data_schema = ModalidadSchema(many=True)
+        
+        context = {
+            'status':True,
+            'content':data_schema.dump(listaDatos)
         }
         
         return jsonify(context)
