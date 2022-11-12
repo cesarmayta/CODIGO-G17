@@ -34,7 +34,7 @@ class Oferta(db.Model):
     
     oferta_id = db.Column(db.Integer,primary_key=True)
     oferta_titulo = db.Column(db.String(255),nullable=False)
-    area_id = db.Column(db.Integer,ForeignKey("tbl_area.area_id"))
+    area_id = db.Column(db.Integer,db.ForeignKey("tbl_area.area_id"))
     
     def __init__(self,titulo):
         self.oferta_titulo = titulo

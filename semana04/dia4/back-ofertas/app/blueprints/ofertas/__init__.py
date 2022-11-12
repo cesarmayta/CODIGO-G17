@@ -7,11 +7,8 @@ from .controllers import (OfertaController,AreaController,
 ofertas = Blueprint('ofertas',__name__,url_prefix='/ofertas')
 
 
-ofertaController = OfertaController()
-
-
 ### rutas ###
-ofertas.add_url_rule('/',view_func=ofertaController.index,methods=['GET'])
+ofertas.add_url_rule('/',view_func=OfertaController().getOferta,methods=['GET'])
 ##### RUTAS DE AREA ##############
 ofertas.add_url_rule('/area',view_func=AreaController().getAll,methods=['GET'])
 ofertas.add_url_rule('/area/<int:id>',view_func=AreaController().getById,methods=['GET'])
