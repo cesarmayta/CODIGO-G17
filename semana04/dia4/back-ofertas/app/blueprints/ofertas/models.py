@@ -34,7 +34,15 @@ class Oferta(db.Model):
     
     oferta_id = db.Column(db.Integer,primary_key=True)
     oferta_titulo = db.Column(db.String(255),nullable=False)
+    oferta_fec_pub = db.Column(db.Date,nullable=False)
+    oferta_fec_fin = db.Column(db.Date,nullable=False)
+    oferta_resumen = db.Column(db.Text)
+    oferta_detalle = db.Column(db.Text)
+    oferta_estado = db.Column(db.Integer,nullable=False)
+    modalidad_id = db.Column(db.Integer,db.ForeignKey("tbl_modalidad.modalidad_id"))
+    nivel_id = db.Column(db.Integer,db.ForeignKey("tbl_nivel.nivel_id"))
     area_id = db.Column(db.Integer,db.ForeignKey("tbl_area.area_id"))
+    
     
     def __init__(self,titulo):
         self.oferta_titulo = titulo

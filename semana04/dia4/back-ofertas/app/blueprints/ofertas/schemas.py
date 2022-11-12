@@ -14,5 +14,7 @@ class NivelSchema(ma.Schema):
         
 class OfertaSchema(ma.Schema):
     class Meta:
-        fields = ('oferta_id','oferta_titulo','area_id')
+        fields = ('oferta_id','oferta_titulo',
+                  'oferta_fec_pub','oferta_fec_fin',
+                  'modalidad_id','nivel_id','area_id')
 

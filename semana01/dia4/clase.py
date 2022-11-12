@@ -19,7 +19,7 @@ class Automovil:
         
     def frenar(self):
         print('frenar ' + self.marca)
-        
+              
 ##creamos objetos
 vw = Automovil(1970,'CH-1234','Amarillo','Volkswagen')
 tico = Automovil(1985,'AB-1234','Rojo','Tico')
