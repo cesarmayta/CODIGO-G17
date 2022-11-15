@@ -5,7 +5,7 @@ class Area(db.Model):
     
     area_id = db.Column(db.Integer,primary_key=True)
     area_descripcion = db.Column(db.String(100),nullable=False)
-    ofertas = db.relationship("Oferta",back_populates="area_id")
+    ofertas = db.relationship("Oferta",backref='area',lazy=True)
     
     def __init__(self,descripcion):
         self.area_descripcion = descripcion 
@@ -42,7 +42,6 @@ class Oferta(db.Model):
     modalidad_id = db.Column(db.Integer,db.ForeignKey("tbl_modalidad.modalidad_id"))
     nivel_id = db.Column(db.Integer,db.ForeignKey("tbl_nivel.nivel_id"))
     area_id = db.Column(db.Integer,db.ForeignKey("tbl_area.area_id"))
-    area = db.relationship("Area",back_populates="oferta_id")
     
     def __init__(self,titulo):
         self.oferta_titulo = titulo

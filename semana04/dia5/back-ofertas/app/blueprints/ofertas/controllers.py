@@ -17,9 +17,9 @@ class OfertaController:
         return jsonify(context)
     
     def getOferta(self):
-        stmt = db.select(Oferta).join(Oferta.area)
-        listaDatos =  db.session.execute(stmt).scalars()
-        #listaDatos = Oferta.query.all()
+        #stmt = db.select(Oferta).join(Oferta.area)
+        #listaDatos =  db.session.execute(stmt).scalars()
+        listaDatos = Oferta.query.all()
         #print(listaDatos)
         for dato in listaDatos:
             print(dato)
@@ -35,9 +35,9 @@ class OfertaController:
 class AreaController:
     
     def getAll(self):
-        stmt = db.select(Area).join(Area.ofertas)
-        #listaAreas = Area.query.all() # select * from tbl_area
-        listaAreas = db.session.execute(stmt).scalars()
+        #stmt = db.select(Area).join(Area.ofertas)
+        listaAreas = Area.query.all() # select * from tbl_area
+        #listaAreas = db.session.execute(stmt).scalars()
         print(listaAreas)
         area_schema = AreaSchema(many=True)
         
