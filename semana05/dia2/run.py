@@ -35,6 +35,7 @@ def index():
 def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
+    
     if username != "admin" or password != "admin":
         return jsonify({"msg": "Bad username or password"}), 401
 
@@ -47,6 +48,7 @@ def login():
     return jsonify(context)
 
 @app.route('/user')
+@jwt_required()
 def getUser():
     cursor = mysql.connection.cursor()
     cursor.execute('select user_id as id,user_name as user from tbl_user')
