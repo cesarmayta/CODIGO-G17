@@ -7,3 +7,8 @@ CREATE table tbl_user (
     user_name VARCHAR(255) NOT NULL,
     user_password VARCHAR(255) NOT NULL
 );
+
+insert into tbl_user(user_name,user_password)
+values ('admin',md5('admin')),('guest',md5('guest'));
+
+select * from tbl_user;
