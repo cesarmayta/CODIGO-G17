@@ -12,11 +12,15 @@ login_manager.init_app(app)
 login_manager.login_view = "login"
 
 @app.route("/")
+@login_required
 def index():
     return render_template('index.html')
 
 @app.route("/login",methods=['GET','POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("index"))
+    
     mensajeError = ""
     if request.method == "POST":
         email = request.form['email']
@@ -49,6 +53,7 @@ def register():
         password = request.form["password"]
         newUser = User(len(db_user)+1,firstname,lastname,email,password)
         db_user.append(newUser)
+        login_user(newUser)
         print(db_user)
         return redirect(url_for('login'))
     
@@ -56,6 +61,13 @@ def register():
         'form':form
     }
     return render_template('register.html',**context)
+
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("index"))
 
 @login_manager.user_loader
 def user_loader(user_id):
