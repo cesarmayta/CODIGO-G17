@@ -1,8 +1,8 @@
 from flask import Flask,render_template,redirect,url_for,request
-from flask_login import LoginManager
+from flask_login import LoginManager,login_user,login_required,logout_user,current_user
 
 from forms import RegisterForm
-from models import User,db_user
+from models import User,db_user,get_user
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "miclavesecreta"
@@ -15,9 +15,26 @@ login_manager.login_view = "login"
 def index():
     return render_template('index.html')
 
-@app.route("/login")
+@app.route("/login",methods=['GET','POST'])
 def login():
-    return render_template('login.html')
+    mensajeError = ""
+    if request.method == "POST":
+        email = request.form['email']
+        password = request.form['password']
+        print("email : " + email + " - password : " + password)
+        user =  get_user(email)
+        if user is not None and user.verify_password(password):
+            #iniciamos sesion con el metodo login_user de flask-login
+            login_user(user)
+            return redirect(url_for("index"))
+        else:
+            mensajeError = "Not valid Email or Password"
+    
+    
+    context = {
+        'mensajeError':mensajeError
+    }
+    return render_template('login.html',**context)
 
 @app.route('/register',methods=['GET','POST'])
 def register():

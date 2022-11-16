@@ -14,3 +14,10 @@ class User(UserMixin):
         
     def verify_password(self,password):
         return check_password_hash(self.password,password)
+    
+    
+def get_user(email):
+    for user in db_user:
+        if user.email == email:
+            return user
+        return None
