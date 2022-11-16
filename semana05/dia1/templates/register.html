@@ -12,25 +12,37 @@
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 mb-md-0">
                                     {{form.firstname(class_="form-control")}}
-                                    <label for="inputLastName">{{form.firstname.label}}</label>
+                                    <label for="inputFirstName">{{form.firstname.label}}</label>
+                                    {% for error in form.firstname.errors %}
+                                        <small style="color :red;">{{error}}</small>
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     {{form.lastname(class_="form-control")}}
                                     <label for="inputLastName">{{form.lastname.label}}</label>
+                                    {% for error in form.lastname.errors %}
+                                        <small style="color :red;">{{error}}</small>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating mb-3">
                             {{form.email(class_="form-control")}}
                             <label for="inputEmail">{{form.email.label}}</label>
+                            {% for error in form.email.errors %}
+                                        <small style="color :red;">{{error}}</small>
+                            {% endfor %}
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 mb-md-0">
                                     {{form.password(class_="form-control")}}
                                     <label for="inputPassword">{{form.password.label}}</label>
+                                    {% for error in form.password.errors %}
+                                        <small style="color :red;">{{error}}</small>
+                                    {% endfor %}
                                 </div>
                             </div>
     
