@@ -1,5 +1,6 @@
 from flask import Flask,jsonify,request
 from flask_mysqldb import MySQL
+from flask_cors import CORS
 
 
 from flask_jwt_extended import create_access_token
@@ -8,6 +9,7 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 
 app = Flask(__name__)
+CORS(app)
 
 app.config["JWT_SECRET_KEY"] = "qwerty123"  # Change this!
 jwt = JWTManager(app)
