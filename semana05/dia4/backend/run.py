@@ -31,4 +31,21 @@ def index():
     }
     return jsonify(context)
 
+
+@app.route('/tarea',methods=['POST'])
+def setTarea():
+    descripcion = request.json['descripcion']
+    estado = request.json['estado']
+    
+    nuevaTarea = Tarea(descripcion,estado)
+    db.session.add(nuevaTarea)
+    db.session.commit()
+    
+    context = {
+        'status':True,
+        'content':'registro exitoso'
+    }
+    
+    return jsonify(context)
+
 app.run(debug=True)
