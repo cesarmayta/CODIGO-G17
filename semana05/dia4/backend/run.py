@@ -1,0 +1,34 @@
+from flask import Flask,jsonify,request
+from flask_sqlalchemy import SQLAlchemy
+
+
+app = Flask(__name__)
+app.app_context().push()
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/db_tareas'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+##### creamos clases del ORM #####
+class Tarea(db.Model):
+    id = db.Column(db.Integer,primary_key=True) # id INT PRIMARY KEY
+    descripcion = db.Column(db.String(200),nullable=False) # descripcion varchar(200) NOT NULL
+    estado = db.Column(db.String(100),nullable=False)
+    
+    def __init__(self,descripcion,estado):
+        self.descripcion = descripcion
+        self.estado = estado
+        
+#### CONVERTIMOS LA CLASE EN UNA TABLA : MIGRACIÓN
+db.create_all()
+print("se creo la tabla en la base de datos")
+
+@app.route('/')
+def index():
+    context = {
+        'status':True,
+        'content':'servidor activo'
+    }
+    return jsonify(context)
+
+app.run(debug=True)
