@@ -10,6 +10,7 @@ class App extends React.Component{
     })
   }
 
+  
   componentDidMount(){
     console.log("cargando tareas...")
     axios.get('http://127.0.0.1:5000/tarea')
@@ -21,11 +22,12 @@ class App extends React.Component{
     })
   }
 
+
   render(){
     return(
       <div>
         <h1>Lista de Tareas</h1>
-        <table border="1">
+        <table border="1" className="table table-dark">
           <tr>
             <th>Id</th>
             <th>Tarea</th>
