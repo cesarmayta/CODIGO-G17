@@ -14,6 +14,7 @@ class App extends React.Component{
     })
     this.cambioDescripcion = this.cambioDescripcion.bind(this);
     this.guardar = this.guardar.bind(this);
+    this.eliminar = this.eliminar.bind(this);
   }
 
   cambioDescripcion(e){
@@ -44,6 +45,16 @@ class App extends React.Component{
       })
     })
   }
+
+  eliminar(cod){
+    axios.delete('http://127.0.0.1:5000/tarea/'+cod)
+    .then(res=>{
+      var temp = this.state.tareas.filter((tarea)=>tarea.id !== cod);
+      this.setState({
+        tareas:temp
+      })
+    })
+  }
   
   componentDidMount(){
     console.log("cargando tareas...")
@@ -66,6 +77,7 @@ class App extends React.Component{
                 <th>Id</th>
                 <th>Tarea</th>
                 <th>Estado</th>
+                <th>...</th>
               </tr>
             </thead>
             <tbody>
@@ -75,6 +87,7 @@ class App extends React.Component{
                     <td>{tarea.id}</td>
                     <td>{tarea.descripcion}</td>
                     <td>{tarea.estado}</td>
+                    <td><Button variant="danger" onClick={()=>this.eliminar(tarea.id)}>Eliminar</Button></td>
                   </tr>
                 )
               })}

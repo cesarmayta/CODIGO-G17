@@ -92,4 +92,20 @@ def updateTarea(id):
     
     return jsonify(context)
 
+@app.route('/tarea/<id>',methods=['DELETE'])
+def deleteTarea(id):
+    
+    deleteTarea = Tarea.query.get(id)
+    db.session.delete(deleteTarea)
+    db.session.commit()
+    
+    data_schema = TareaSchema()
+    
+    context = {
+        'status':True,
+        'content':data_schema.dump(deleteTarea)
+    }
+    
+    return jsonify(context)
+
 app.run(debug=True)
