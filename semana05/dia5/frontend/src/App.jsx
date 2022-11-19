@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Table,Container,Button,Form} from 'react-bootstrap'
 
 class App extends React.Component{
 
@@ -21,28 +23,32 @@ class App extends React.Component{
       })
     })
   }
-
-
   render(){
     return(
       <div>
-        <h1>Lista de Tareas</h1>
-        <table border="1" className="table table-dark">
-          <tr>
-            <th>Id</th>
-            <th>Tarea</th>
-            <th>Estado</th>
-          </tr>
-          {this.state.tareas.map((tarea)=>{
-            return(
-              <tr key={tarea.id}>
-                <td>{tarea.id}</td>
-                <td>{tarea.descripcion}</td>
-                <td>{tarea.estado}</td>
+        <Container>
+          <h1>Lista de Tareas</h1>
+          <Table striped bordered hover variant="dark">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Tarea</th>
+                <th>Estado</th>
               </tr>
-            )
-          })}
-        </table>
+            </thead>
+            <tbody>
+              {this.state.tareas.map((tarea)=>{
+                return(
+                  <tr key={tarea.id}>
+                    <td>{tarea.id}</td>
+                    <td>{tarea.descripcion}</td>
+                    <td>{tarea.estado}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </Table>
+        </Container>
       </div>
     )
   }
