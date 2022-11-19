@@ -17,7 +17,7 @@ class App extends React.Component{
   }
 
   cambioDescripcion(e){
-    console.log(e.target.value);
+    //console.log(e.target.value);
     this.setState({
       descripcion : e.target.value
     })
@@ -29,8 +29,20 @@ class App extends React.Component{
       descripcion : this.state.descripcion,
       estado : this.state.estado
     }
-    console.log(dataTarea)
-    
+    //console.log(dataTarea)
+    //registro de nueva tarea
+    axios.post('http://localhost:5000/tarea',dataTarea)
+    .then(res =>{
+      console.log(res.data.content);
+      this.state.tareas.push(res.data.content)
+      var temp = this.state.tareas
+      this.setState({
+        descripcion:'',
+        tareas:temp
+      }).catch((error)=>{
+        alert(error.toString());
+      })
+    })
   }
   
   componentDidMount(){
