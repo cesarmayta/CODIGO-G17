@@ -8,10 +8,30 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = ({
-      tareas : []
+      tareas : [],
+      descripcion : '',
+      estado : 'pendiente'
+    })
+    this.cambioDescripcion = this.cambioDescripcion.bind(this);
+    this.guardar = this.guardar.bind(this);
+  }
+
+  cambioDescripcion(e){
+    console.log(e.target.value);
+    this.setState({
+      descripcion : e.target.value
     })
   }
 
+  guardar(e){
+    e.preventDefault();
+    const dataTarea = {
+      descripcion : this.state.descripcion,
+      estado : this.state.estado
+    }
+    console.log(dataTarea)
+    
+  }
   
   componentDidMount(){
     console.log("cargando tareas...")
@@ -48,6 +68,15 @@ class App extends React.Component{
               })}
             </tbody>
           </Table>
+          <h1>Agregar Tarea</h1>
+          <Form onSubmit={this.guardar}>
+            <Form.Group className="mb-3">
+              <Form.Control type="text" value={this.state.descripcion} onChange={this.cambioDescripcion} />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Guardar
+            </Button>
+          </Form>
         </Container>
       </div>
     )
