@@ -73,4 +73,23 @@ def getTarea():
     }
     return jsonify(context)
 
+@app.route('/tarea/<id>',methods=['PUT'])
+def updateTarea(id):
+    descripcion = request.json['descripcion']
+    estado = request.json['estado']
+    
+    updateTarea = Tarea.query.get(id)
+    updateTarea.descripcion = descripcion
+    updateTarea.estado = estado
+    db.session.commit()
+    
+    data_schema = TareaSchema()
+    
+    context = {
+        'status':True,
+        'content':data_schema.dump(updateTarea)
+    }
+    
+    return jsonify(context)
+
 app.run(debug=True)
