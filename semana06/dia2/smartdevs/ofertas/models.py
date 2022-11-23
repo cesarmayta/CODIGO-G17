@@ -27,6 +27,9 @@ class TblModalidad(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_modalidad'
+        
+    def __str__(self):
+        return self.modalidad_descripcion
 
 
 class TblNivel(models.Model):
@@ -36,13 +39,16 @@ class TblNivel(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_nivel'
+        
+    def __str__(self):
+        return self.nivel_descripcion
 
 
 class TblOferta(models.Model):
-    oferta_id = models.AutoField(primary_key=True)
-    oferta_titulo = models.CharField(max_length=255)
-    oferta_fec_pub = models.DateField()
-    oferta_fec_fin = models.DateField()
+    oferta_id = models.AutoField(primary_key=True,verbose_name='id')
+    oferta_titulo = models.CharField(max_length=255,verbose_name='titulo')
+    oferta_fec_pub = models.DateField(verbose_name='Fecha Publicación')
+    oferta_fec_fin = models.DateField(verbose_name='Fecha Fin')
     oferta_resumen = models.TextField(blank=True, null=True)
     oferta_detalle = models.TextField(blank=True, null=True)
     oferta_estado = models.IntegerField()
@@ -56,6 +62,11 @@ class TblOferta(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_oferta'
+        verbose_name = 'Oferta Laboral'
+        verbose_name_plural = 'Ofertas Laborales'
+        
+    def __str__(self):
+        return self.oferta_titulo
 
 
 class TblOfertaPostulante(models.Model):
@@ -77,6 +88,9 @@ class TblPeriodo(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_periodo'
+        
+    def __str__(self):
+        return self.periodo_descripcion
 
 
 class TblPostulante(models.Model):
@@ -167,6 +181,9 @@ class TblUbicacion(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_ubicacion'
+        
+    def __str__(self):
+        return self.ubicacion_ciudad
 
 
 class TblUsuario(models.Model):

@@ -25,4 +25,5 @@ DATABASES = {
 10 - python manage.py inspectdb > ofertas/models.py
 11 - python manage.py migrate
 12 - python manage.py createsuperuser
+13 - python manage.py runserver
 
