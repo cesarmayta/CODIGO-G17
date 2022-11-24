@@ -1,1 +1,13 @@
-<h1>BIENVENIDO A MI APP DE RECETAS</h1>
+<h1>{{titulo}}</h1>
+<h2>Recetas</h2>
+<ul>
+    {% for receta in recetas %}
+        <li><a href="/receta/{{receta.id}}">{{receta.titulo}}</a></li>
+    {% endfor %}
+</ul>
+<h2>Autores</h2>
+<ul>
+    {%for autor in autores %} 
+        <li>{{autor.nombre}}</li>
+    {% endfor %}
+</ul>
