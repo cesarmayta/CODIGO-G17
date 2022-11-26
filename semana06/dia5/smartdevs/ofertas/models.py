@@ -88,6 +88,38 @@ class Oferta(models.Model):
 
     def __str__(self):
         return self.oferta_titulo
+    
+class Postulante(models.Model):
+    postulante_id = models.AutoField(primary_key=True)
+    postulante_nombres = models.CharField(max_length=255,verbose_name='Nombres')
+    postulante_apellidos = models.CharField(max_length=255,verbose_name='Apellidos')
+    postulante_nrodocide = models.CharField(max_length=100,verbose_name='DNI')
+    postulante_fecnac = models.DateField(verbose_name='Fecha Nacimiento')
+    postulante_genero = models.CharField(max_length=1,verbose_name='Sexo')
+    postulante_estado = models.CharField(max_length=1)
+    postulante_fecreg = models.DateTimeField(auto_now=True)
+    postulante_perfil = models.TextField(blank=True, null=True,verbose_name='Perfil de Trabajo')
+
+    class Meta:
+        managed = False
+        db_table = 'tbl_postulante'
+        
+    def __str__(self):
+        return self.postulante_nombres
+        
+class OfertaPostulante(models.Model):
+    oferta_postulante_id = models.AutoField(primary_key=True)
+    oferta_postulante_fecreg = models.DateTimeField(auto_now=True)
+    oferta_postulante_estado = models.CharField(max_length=1,default='1')
+    oferta = models.ForeignKey(Oferta, models.DO_NOTHING)
+    postulante = models.ForeignKey(Postulante, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'tbl_oferta_postulante'
+        
+    def __str__(self):
+        return self.oferta_postulante_id
 
 
 

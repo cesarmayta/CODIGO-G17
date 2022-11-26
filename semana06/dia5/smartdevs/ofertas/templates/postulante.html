@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="job-details-page content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <!-- job box 2 start -->
+                <div class="job-box-2">
+                    <div class="company-logo">
+                        <img src="http://placehold.it/80x80" alt="avatar">
+                    </div>
+                    <div class="description">
+                        <h5 class="title"><a href="#">{{oferta.oferta_titulo}}</a></h5>
+                        <div class="candidate-listing-footer">
+                            <ul>
+                                <li><i class="flaticon-work"></i>{{oferta.area}}</li>
+                                <li><i class="flaticon-pin"></i> {{oferta.ubicacion}}</li>
+                                <li><i class="flaticon-time"></i> {{oferta.periodo}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-boder">
+                <!-- job description start -->
+                <div class="job-description mb-40">
+                    <h3 class="heading-2">Datos de Postulante</h3>
+                    <form method="post" action="postulanteregistro"></form>
+                    {{form|crispy}}
+                    <input type="hidden" name="oferta_id" value="{{ofert.oferta_id}}"/>
+                    <p class="auth-submit">
+                        <input type="submit" class="search-button button-theme" value="Postular">
+                    </p>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

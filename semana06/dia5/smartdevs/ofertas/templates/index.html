@@ -100,7 +100,7 @@
                     </div>
                     <div class="description">
                         <div class="float-left">
-                            <h5 class="title"><a href="job-details.html">{{oferta.oferta_titulo}}</a></h5>
+                            <h5 class="title"><a href="{% url 'ofertas:oferta' oferta.oferta_id %}">{{oferta.oferta_titulo}}</a></h5>
                             <div class="candidate-listing-footer">
                                 <ul>
                                     <li><i class="flaticon-pin"></i> {{oferta.ubicacion}}</li>

@@ -4,6 +4,8 @@ from .models import (
     Area,Modalidad,Nivel,Periodo,Ubicacion,Oferta
 )
 
+from .forms import PostulanteForm
+
 # Create your views here.
 ############## VISTAS PARA OFERTAS LABORALES ###############
 def index(request):
@@ -59,5 +61,17 @@ def ofertaDetalle(request,oferta_id):
     }
     
     return render(request,'oferta.html',context)
+
+def postulanteOferta(request,oferta_id):
+    objOferta = Oferta.objects.get(pk=oferta_id)
+    
+    frmPostulante = PostulanteForm()
+    
+    context = {
+        "oferta":objOferta,
+        "form":frmPostulante
+    }
+    
+    return render(request,'postulante.html',context)
     
     
