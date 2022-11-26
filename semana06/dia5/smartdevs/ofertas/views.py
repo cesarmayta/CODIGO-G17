@@ -50,5 +50,14 @@ def ofertaPorTitulo(request):
     }
     
     return render(request,'index.html',context)
+
+def ofertaDetalle(request,oferta_id):
+    objOferta = Oferta.objects.get(pk=oferta_id) #select * from oferta where id=oferta_id
+    
+    context = {
+        "oferta":objOferta
+    }
+    
+    return render(request,'oferta.html',context)
     
     

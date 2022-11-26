@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="job-details-page content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <!-- job box 2 start -->
+                <div class="job-box-2">
+                    <div class="company-logo">
+                        <img src="http://placehold.it/80x80" alt="avatar">
+                    </div>
+                    <div class="description">
+                        <h5 class="title"><a href="#">{{oferta.oferta_titulo}}</a></h5>
+                        <div class="candidate-listing-footer">
+                            <ul>
+                                <li><i class="flaticon-work"></i>{{oferta.area}}</li>
+                                <li><i class="flaticon-pin"></i> {{oferta.ubicacion}}</li>
+                                <li><i class="flaticon-time"></i> {{oferta.periodo}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-boder">
+                <!-- job description start -->
+                <div class="job-description mb-40">
+                    <h3 class="heading-2">Resumen</h3>
+                    <p>{{oferta.oferta_resumen}}</p>
+                </div>
+                <div class="job-description mb-40">
+                    <h3 class="heading-2">Detalle</h3>
+                    <p>{{oferta.oferta_detalle}}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="sidebar-right-2">
+                    <!-- Search box start -->
+                    <div class="widget search-box">
+                        <form method="GET">
+                            <div class="form-group mb-0">
+                                <button class="search-button button-theme">Postular</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Job overview start -->
+                    <div class="job-overview widget">
+                        <h3 class="sidebar-title">Condiciones</h3>
+                        <div class="s-border"></div>
+                        <ul>
+                            <!--<li><i class="flaticon-money"></i><h5>Salary</h5><span>£12,000 - £25,000</span></li>-->
+                            <li><i class="flaticon-pin"></i><h5>Ubicación</h5><span>{{oferta.ubicacion}}</span></li>
+                            <li><i class="flaticon-internet"></i><h5>Modalidad</h5><span>{{oferta.modalidad}}</span></li>
+                            <li><i class="flaticon-work"></i><h5>Area</h5><span>{{oferta.area}}</span></li>
+                            <li><i class="flaticon-time"></i><h5>Periodo</h5><span>{{oferta.periodo}}</span></li>
+                            <li><i class="flaticon-notepad"></i><h5>Nivel</h5><span>{{oferta.nivel}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- Quick contact start -->
+                    <div class="widget-5 contact-2 quick-contact">
+                        <h3 class="sidebar-title">Contactame</h3>
+                        <div class="s-border"></div>
+                        <form action="#" method="GET" enctype="multipart/form-data">
+                            <div class="form-group name">
+                                <input type="text" name="name" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="form-group email">
+                                <input type="email" name="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group message">
+                                <textarea class="form-control" name="message" placeholder="Write message"></textarea>
+                            </div>
+                            <div class="send-btn">
+                                <button type="submit" class="btn btn-md button-theme">Enviar Mensaje</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
