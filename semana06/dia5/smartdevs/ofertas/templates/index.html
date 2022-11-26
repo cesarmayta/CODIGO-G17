@@ -1,0 +1,122 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="job-listing-section content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-12">
+                <div class="sidebar-right">
+                    <!-- Advanced search start -->
+                    <div class="widget-4 advanced-search">
+                        <form method="GET" class="informeson">
+                            <div class="form-group">
+                                <label>Busqueda</label>
+                                <input type="text" name="search" class="form-control selectpicker search-fields" placeholder="Search Keywords">
+                            </div>
+                            <div class="form-group">
+                                <label>Ciudad</label>
+                                <select class="selectpicker search-fields" name="Location">
+                                    {% for ubicacion in ubicaciones %}
+                                        <option>{{ubicacion.ubicacion_ciudad}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Areas</label>
+                                <select class="selectpicker search-fields" name="categories">
+                                    {% for area in areas %}
+                                    <option>{{area.area_descripcion}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <br>
+
+                            <a class="show-more-options" data-toggle="collapse" data-target="#options-periodo">
+                                <i class="fa fa-plus-circle"></i> Periodo
+                            </a>
+                            <div id="options-periodo" class="collapse">
+                                {% for periodo in periodos %}
+                                    <div class="checkbox checkbox-theme checkbox-circle">
+                                        <input id="checkbox13" type="checkbox">
+                                        <label for="checkbox13">
+                                            {{periodo.periodo_descripcion}}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                                
+                                <br>
+                            </div>
+
+                            <a class="show-more-options" data-toggle="collapse" data-target="#options-content_niveles">
+                                <i class="fa fa-plus-circle"></i> Nivel
+                            </a>
+                            <div id="options-content_niveles" class="collapse">
+                                {% for nivel in niveles %}
+                                <div class="checkbox checkbox-theme checkbox-circle">
+                                    <input id="checknivel" type="checkbox">
+                                    <label for="checknivel">
+                                        {{nivel.nivel_descripcion}}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                                
+                                <br>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-8 col-md-12">
+                <!-- Option bar start -->
+                <div class="option-bar d-none d-xl-block d-lg-block d-md-block d-sm-block">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-7 col-sm-7">
+                            <div class="sorting-options2">
+                                <span class="sort">Sort by:</span>
+                                <select class="selectpicker search-fields" name="default-order">
+                                    <option>Relevance</option>
+                                    <option>Newest</option>
+                                    <option>Oldest</option>
+                                    <option>Random</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-5 col-sm-5">
+                            <div class="sorting-options">
+                                <a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
+                                <a href="#" class="change-view-btn"><i class="fa fa-th-large"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- job box start -->
+                {% for oferta in ofertas %}
+                <div class="job-box">
+                    <div class="company-logo">
+                        <img src="http://placehold.it/90x90" alt="logo">
+                    </div>
+                    <div class="description">
+                        <div class="float-left">
+                            <h5 class="title"><a href="job-details.html">{{oferta.oferta_titulo}}</a></h5>
+                            <div class="candidate-listing-footer">
+                                <ul>
+                                    <li><i class="flaticon-pin"></i> {{oferta.ubicacion}}</li>
+                                    <li><i class="flaticon-time"></i> {{oferta.periodo}}</li>
+                                </ul>
+                                <h6>{{oferta.oferta_fec_fin}}</h6>
+                            </div>
+                        </div>
+                        <div class="div-right">
+                            <a href="#" class="apply-button">Apply Now</a>
+                            <a href="#"><i class="flaticon-heart favourite"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+               
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
