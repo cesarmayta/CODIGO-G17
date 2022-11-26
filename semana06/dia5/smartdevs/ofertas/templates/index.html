@@ -7,17 +7,18 @@
                 <div class="sidebar-right">
                     <!-- Advanced search start -->
                     <div class="widget-4 advanced-search">
-                        <form method="GET" class="informeson">
+                        <form method="POST" action="/ofertasportitulo"  class="informeson">
+                            {% csrf_token %}
                             <div class="form-group">
                                 <label>Busqueda</label>
-                                <input type="text" name="search" class="form-control selectpicker search-fields" placeholder="Search Keywords">
+                                <input type="text" name="titulo" class="form-control selectpicker search-fields" placeholder="Search Keywords">
                             </div>
                             
                             <div class="form-group">
                                 <label>Areas</label>
-                                <select class="selectpicker search-fields" name="categories">
+                                <select class="selectpicker search-fields" name="categories"  onchange="this.options[this.selectedIndex].value && (window.location = '/ofertasporarea/'+ this.options[this.selectedIndex].value);">
                                     {% for area in areas %}
-                                    <option>{{area.area_descripcion}}</option>
+                                    <option value="{{area.area_id}}">{{area.area_descripcion}}</option>
                                     {% endfor %}
                                 </select>
                             </div>

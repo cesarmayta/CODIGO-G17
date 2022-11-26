@@ -35,3 +35,20 @@ def ofertasPorArea(request,area_id):
     }
     
     return render(request,'index.html',context)
+
+def ofertaPorTitulo(request):
+    titulo = request.POST['titulo']
+    print('valor de busqueda : ' + titulo)
+    
+    #select * from oferta where titulo like '%titulo%'
+    listaOfertas = Oferta.objects.filter(oferta_titulo__icontains = titulo.lower())
+    listaAreas = Area.objects.all()
+    
+    context = {
+        "areas":listaAreas,
+        "ofertas":listaOfertas
+    }
+    
+    return render(request,'index.html',context)
+    
+    
