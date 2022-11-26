@@ -12,14 +12,7 @@
                                 <label>Busqueda</label>
                                 <input type="text" name="search" class="form-control selectpicker search-fields" placeholder="Search Keywords">
                             </div>
-                            <div class="form-group">
-                                <label>Ciudad</label>
-                                <select class="selectpicker search-fields" name="Location">
-                                    {% for ubicacion in ubicaciones %}
-                                        <option>{{ubicacion.ubicacion_ciudad}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
+                            
                             <div class="form-group">
                                 <label>Areas</label>
                                 <select class="selectpicker search-fields" name="categories">
@@ -29,7 +22,16 @@
                                 </select>
                             </div>
                             <br>
-
+                            
+<!--
+    <div class="form-group">
+                                <label>Ciudad</label>
+                                <select class="selectpicker search-fields" name="Location">
+                                    {% for ubicacion in ubicaciones %}
+                                        <option>{{ubicacion.ubicacion_ciudad}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                             <a class="show-more-options" data-toggle="collapse" data-target="#options-periodo">
                                 <i class="fa fa-plus-circle"></i> Periodo
                             </a>
@@ -61,13 +63,13 @@
                                 
                                 <br>
                             </div>
-
+-->
                         </form>
                     </div>
                 </div>
             </div>
             <div class="col-xl-8 col-lg-8 col-md-12">
-                <!-- Option bar start -->
+                <!-- 
                 <div class="option-bar d-none d-xl-block d-lg-block d-md-block d-sm-block">
                     <div class="row">
                         <div class="col-lg-6 col-md-7 col-sm-7">
@@ -89,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- job box start -->
+                job box start -->
                 {% for oferta in ofertas %}
                 <div class="job-box">
                     <div class="company-logo">

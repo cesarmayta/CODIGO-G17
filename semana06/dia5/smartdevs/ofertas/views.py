@@ -23,3 +23,15 @@ def index(request):
         "modalidades":listaModalidades
     }
     return render(request,'index.html',context)
+
+def ofertasPorArea(request,area_id):
+    objArea = Area.objects.get(pk=area_id)
+    listaOfertas = Oferta.objects.filter(area=objArea)
+    listaAreas = Area.objects.all()
+    
+    context = {
+        "areas":listaAreas,
+        "ofertas":listaOfertas
+    }
+    
+    return render(request,'index.html',context)
