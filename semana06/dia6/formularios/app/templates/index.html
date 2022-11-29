@@ -1,0 +1,6 @@
+<h1>Lista de tareas</h1>
+<ul>
+    {% for objetoTarea in lista_tareas %}
+        <li>{{objetoTarea.descripcion}} - {{objetoTarea.estado}}</li>
+    {% endfor %}
+</ul>
