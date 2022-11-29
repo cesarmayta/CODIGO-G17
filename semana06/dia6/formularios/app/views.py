@@ -2,14 +2,28 @@ from django.shortcuts import render
 
 # Create your views here.
 from .models import Tarea
+from .forms import TareaForm
 
 def index(request):
     #obtenemos el listado de tareas
     listaTareas = Tarea.objects.all() #select * from app_tarea
     print(listaTareas)
     
+    if request.method == "POST":
+        formNuevaTarea = TareaForm(request.POST)
+        if formNuevaTarea.is_valid():
+            dataTarea = formNuevaTarea.cleaned_data
+            
+            nuevaTarea = Tarea()
+            nuevaTarea.descripcion = dataTarea['descripcion']
+            nuevaTarea.save()
+            
+    
+    form_tarea = TareaForm()
+    
     context = {
-        'lista_tareas':listaTareas
+        'lista_tareas':listaTareas,
+        'form_tarea':form_tarea
     }
     
     return render(request,'index.html',context)

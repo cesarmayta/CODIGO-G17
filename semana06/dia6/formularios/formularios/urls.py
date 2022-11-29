@@ -18,7 +18,7 @@ from django.urls import path
 from app.views import index,tarea
 
 urlpatterns = [
-    path('tareas/',index),
+    path('',index),
     path('tarea/<int:tarea_id>',tarea),
     path('admin/', admin.site.urls),
 ]

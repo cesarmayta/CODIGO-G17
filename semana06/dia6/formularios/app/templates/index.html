@@ -4,3 +4,8 @@
         <li>{{objetoTarea.descripcion}} - {{objetoTarea.estado}}</li>
     {% endfor %}
 </ul>
+<form method="POST">
+    {% csrf_token %}
+    {{form_tarea}}
+    <input type="submit" value="Agregar"/>
+</form>
