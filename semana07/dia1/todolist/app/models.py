@@ -6,4 +6,8 @@ class Tarea(models.Model):
     fecha_registro = models.DateTimeField(auto_now=True)
     estado = models.CharField(max_length=50,default='pendiente')
     
+class Autor(models.Model):
+    nombre = models.CharField(max_length=200)
+    email = models.EmailField(unique=True)
+    
     

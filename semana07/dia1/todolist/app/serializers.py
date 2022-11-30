@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Tarea
+from .models import Tarea,Autor
 
 class TareaSerializer(serializers.Serializer):
     #id = serializers.IntegerField()
@@ -10,3 +10,8 @@ class TareaSerializer(serializers.Serializer):
     
     def create(self,validated_data):
         return Tarea.objects.create(**validated_data)
+    
+class AutorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Autor
+        fields = '__all__'

@@ -6,8 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-from .models import Tarea
-from .serializers import TareaSerializer
+from .models import Tarea,Autor
+from .serializers import TareaSerializer,AutorSerializer
 
 @api_view(['GET'])
 def index(request):
@@ -46,3 +46,18 @@ def setTarea(request):
         return Response(context)
     else:
         return Response(serData.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET','POST'])
+def autor(request):
+    if request.method == 'GET':
+        data = Autor.objects.all()
+        serData = AutorSerializer(data,many=True)
+        
+        return Response(serData.data)
+    
+    elif request.method == 'POST':
+        serData = AutorSerializer(data=request.data)
+        serData.is_valid(raise_exception=True)
+        serData.save()
+        
+        return Response(serData.data)
