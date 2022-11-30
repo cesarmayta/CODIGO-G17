@@ -10,3 +10,10 @@
     python manage.py createsuperuser
 
 
+## pasos para utilzar django rest framework DRF
+1- instalación
+    pip install djangorestframework
+
+2 - instalar el app en setting
+
+    'rest_framework',
