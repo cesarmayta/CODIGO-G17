@@ -43,3 +43,11 @@ class TareaDetailView(APIView):
         serTarea.save()
         
         return Response(serTarea.data)
+    
+    def delete(self,request,tarea_id):
+        dataTarea = Tarea.objects.get(pk=tarea_id)
+        serTarea = TareaSerializer(dataTarea)
+        
+        dataTarea.delete()
+        
+        return Response(serTarea.data)
