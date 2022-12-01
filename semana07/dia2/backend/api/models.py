@@ -4,8 +4,8 @@ from django.db import models
 class Tarea(models.Model):
     
     ESTADO_CHOICES = (
-        ('pendiente','Pendiente'),
-        ('completado','Completado')
+        ('pendiente','Pendiente de realizar'),
+        ('completado','Completado y listo')
     )
     
     descripcion = models.CharField(max_length=200)
