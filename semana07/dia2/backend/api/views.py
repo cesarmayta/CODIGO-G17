@@ -26,3 +26,20 @@ class TareasView(APIView):
         serData.save()
         
         return Response(serData.data) 
+    
+#para put y delete
+class TareaDetailView(APIView):
+    
+    def get(self,request,tarea_id):
+        dataTarea = Tarea.objects.get(pk=tarea_id)
+        serTarea = TareaSerializer(dataTarea)
+        
+        return Response(serTarea.data)
+    
+    def put(self,request,tarea_id):
+        dataTarea = Tarea.objects.get(pk=tarea_id)
+        serTarea = TareaSerializer(dataTarea,data=request.data)
+        serTarea.is_valid(raise_exception=True)
+        serTarea.save()
+        
+        return Response(serTarea.data)
