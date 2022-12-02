@@ -67,6 +67,17 @@ function App(){
     })
   }
 
+  function eliminar(cod){
+    let rpta = window.confirm("Esta seguro de eliminar?");
+    if(rpta){
+      axios.delete('http://localhost:8000/tarea/'+cod)
+      .then(res=>{
+        var temp = tareas.filter((tarea) => tarea.id !== cod);
+        setTareas(temp);
+      })
+    }
+  }
+
   return(
     <div>
       <h1>Lista de Tareas</h1>
@@ -77,6 +88,7 @@ function App(){
             <th>Descripcion</th>
             <th>Fecha</th>
             <th>Estado</th>
+            <th>...</th>
           </tr>
         </thead>
         <tbody>
@@ -87,6 +99,7 @@ function App(){
                   <td>{tarea.descripcion}</td>
                   <td>{tarea.fecha_registro}</td>
                   <td>{tarea.estado}</td>
+                  <td><a href="#" onClick={()=>eliminar(tarea.id)}>Eliminar</a></td>
               </tr>
             )
           })}
