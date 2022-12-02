@@ -19,21 +19,42 @@ function App(){
 
   function guardar(e){
     e.preventDefault();
+    let cod = id;
     let datos = {
       "descripcion":descripcion,
       "fecha_registro":new Date(),
       "estado":estado
     }
-    axios.post('http://127.0.0.1:8000/tarea',datos)
-    .then(res=>{
-      var temp = tareas;
-      temp.push(res.data);
-      setTareas(temp);
-      setDescripcion('')
-      setEstado('pendiente')
-    }).catch((error)=>{
-      console.log(error.toString());
-    })
+    if(cod > 0){
+      //put
+      axios.put('http://127.0.0.1:8000/tarea/'+cod,datos)
+      .then(res=>{
+        let indx = pos;
+        tareas[indx] = res.data
+        var temp = tareas;
+        setTareas(temp);
+        setPos(null);
+        setId(0);
+        setDescripcion('');
+        setEstado('pendiente')
+      }).catch((error)=>{
+        console.log(error.toString());
+      })
+    }else
+    {
+      //post
+      axios.post('http://127.0.0.1:8000/tarea',datos)
+      .then(res=>{
+        var temp = tareas;
+        temp.push(res.data);
+        setTareas(temp);
+        setDescripcion('')
+        setEstado('pendiente')
+      }).catch((error)=>{
+        console.log(error.toString());
+      })
+    }
+    
   }
 
   function mostrar(cod,index){
@@ -78,7 +99,7 @@ function App(){
                   <option value="pendiente">Pendiente</option>
                   <option value="completado">Completado</option>
                  </select><br/>
-        <input type="submit" value="AGREGAR TAREA"/>
+        <input type="submit" value="GUARDAR"/>
       </form>
     </div>
   )
