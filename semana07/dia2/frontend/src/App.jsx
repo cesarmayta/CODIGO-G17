@@ -4,6 +4,7 @@ import axios from 'axios'
 function App(){
 
   const [tareas,setTareas] = useState([])
+  const [descripcion,setDescripcion] = useState('')
 
   useEffect(()=>{
     axios.get('http://127.0.0.1:8000/tarea')
@@ -12,6 +13,24 @@ function App(){
       setTareas(res.data);
     })
   },[])
+
+  function guardar(e){
+    e.preventDefault();
+    let datos = {
+      "descripcion":descripcion,
+      "fecha_registro":new Date(),
+      "estado":"pendiente" 
+    }
+    axios.post('http://127.0.0.1:8000/tarea',datos)
+    .then(res=>{
+      var temp = tareas;
+      temp.push(res.data);
+      setTareas(temp);
+      setDescripcion('')
+    }).catch((error)=>{
+      console.log(error.toString());
+    })
+  }
 
   return(
     <div>
@@ -37,8 +56,12 @@ function App(){
             )
           })}
         </tbody>
-
       </table>
+      <form onSubmit={guardar}>
+        {descripcion}<br/>
+        Nueva Tarea : <input type="text" value={descripcion} onChange={(e)=>setDescripcion(e.target.value)}/>
+        <input type="submit" value="AGREGAR TAREA"/>
+      </form>
     </div>
   )
 }
