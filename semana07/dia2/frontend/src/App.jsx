@@ -5,6 +5,9 @@ function App(){
 
   const [tareas,setTareas] = useState([])
   const [descripcion,setDescripcion] = useState('')
+  const [estado,setEstado] = useState('pendiente')
+  const [id,setId] = useState(0)
+  const [pos,setPos] = useState(null);
 
   useEffect(()=>{
     axios.get('http://127.0.0.1:8000/tarea')
@@ -19,7 +22,7 @@ function App(){
     let datos = {
       "descripcion":descripcion,
       "fecha_registro":new Date(),
-      "estado":"pendiente" 
+      "estado":estado
     }
     axios.post('http://127.0.0.1:8000/tarea',datos)
     .then(res=>{
@@ -27,8 +30,19 @@ function App(){
       temp.push(res.data);
       setTareas(temp);
       setDescripcion('')
+      setEstado('pendiente')
     }).catch((error)=>{
       console.log(error.toString());
+    })
+  }
+
+  function mostrar(cod,index){
+    axios.get('http://127.0.0.1:8000/tarea/'+cod)
+    .then(res=>{
+      setPos(index);
+      setId(res.data.id)
+      setDescripcion(res.data.descripcion)
+      setEstado(res.data.estado)
     })
   }
 
@@ -48,7 +62,7 @@ function App(){
           {tareas.map((tarea,index)=>{
             return (
               <tr key={tarea.id}>
-                  <td>{tarea.id}</td>
+                  <td><a href="#" onClick={()=>mostrar(tarea.id,index)}>{tarea.id}</a></td>
                   <td>{tarea.descripcion}</td>
                   <td>{tarea.fecha_registro}</td>
                   <td>{tarea.estado}</td>
@@ -59,7 +73,11 @@ function App(){
       </table>
       <form onSubmit={guardar}>
         {descripcion}<br/>
-        Nueva Tarea : <input type="text" value={descripcion} onChange={(e)=>setDescripcion(e.target.value)}/>
+        Nueva Tarea : <input type="text" value={descripcion} onChange={(e)=>setDescripcion(e.target.value)}/><br/>
+        Estado : <select onChange={(e)=>setEstado(e.target.value)}>
+                  <option value="pendiente">Pendiente</option>
+                  <option value="completado">Completado</option>
+                 </select><br/>
         <input type="submit" value="AGREGAR TAREA"/>
       </form>
     </div>
