@@ -1,0 +1,7 @@
+{
+  "extends": ["./node_module/standard/eslintrc.json"],
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"]
+  }
+}
