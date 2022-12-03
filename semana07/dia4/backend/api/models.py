@@ -61,6 +61,9 @@ class TblOferta(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_oferta'
+        
+    def __str__(self):
+        return self.oferta_titulo
 
 
 class TblOfertaPostulante(models.Model):
@@ -101,6 +104,9 @@ class TblPostulante(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_postulante'
+        
+    def __str__(self):
+        return self.postulante_nombres + ' ' + self.postulante_apellidos
 
 
 class TblPostulanteContacto(models.Model):

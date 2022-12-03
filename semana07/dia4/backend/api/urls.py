@@ -11,4 +11,6 @@ urlpatterns = [
     path('nivel/<int:pk>',views.NivelDetail.as_view()),
     path('oferta',views.Oferta.as_view()),
     path('ubicacion',views.Ubicacion.as_view()),
+    path('postulante',views.Postulante.as_view()),
+    path('ofertapostulante',views.OfertaPostulante.as_view()),
 ]

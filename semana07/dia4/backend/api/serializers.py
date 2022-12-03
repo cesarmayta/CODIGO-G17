@@ -1,5 +1,10 @@
 from rest_framework import serializers
-from .models import TblArea,TblModalidad,TblNivel,TblOferta,TblUbicacion
+from .models import (
+    TblArea,TblModalidad,
+    TblNivel,TblOferta,
+    TblUbicacion,TblPostulante,
+    TblOfertaPostulante
+    )
 
 class AreaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -41,3 +46,13 @@ class OfertaSerializer(serializers.ModelSerializer):
         representation['periodo'] = instance.periodo.periodo_descripcion
         representation['ubicacion'] = serUbicacion.data
         return representation
+    
+class PostulanteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TblPostulante
+        fields = '__all__'
+        
+class OfertaPostulanteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TblOfertaPostulante
+        fields = '__all__'
