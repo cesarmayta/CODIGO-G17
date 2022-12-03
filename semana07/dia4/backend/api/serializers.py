@@ -30,7 +30,25 @@ class UbicacionSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         return representation
         
+class PostulanteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TblPostulante
+        fields = '__all__'
+        
+class OfertaPostulanteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TblOfertaPostulante
+        fields = '__all__'
+        
+    def to_representation(self,instance):
+        serPostulante = PostulanteSerializer(instance.postulante)
+        representation = super().to_representation(instance)
+        representation['postulante'] = serPostulante.data
+        return representation
+    
 class OfertaSerializer(serializers.ModelSerializer):
+    postulantes = OfertaPostulanteSerializer(many=True,read_only=True)
+    
     class Meta:
         model = TblOferta
         fields = '__all__'
@@ -46,13 +64,3 @@ class OfertaSerializer(serializers.ModelSerializer):
         representation['periodo'] = instance.periodo.periodo_descripcion
         representation['ubicacion'] = serUbicacion.data
         return representation
-    
-class PostulanteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TblPostulante
-        fields = '__all__'
-        
-class OfertaPostulanteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TblOfertaPostulante
-        fields = '__all__'

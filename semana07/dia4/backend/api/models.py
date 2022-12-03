@@ -70,7 +70,7 @@ class TblOfertaPostulante(models.Model):
     oferta_postulante_id = models.AutoField(primary_key=True)
     oferta_postulante_fecreg = models.DateTimeField()
     oferta_postulante_estado = models.CharField(max_length=1)
-    oferta = models.ForeignKey(TblOferta, models.DO_NOTHING)
+    oferta = models.ForeignKey(TblOferta,related_name='postulantes',on_delete=models.DO_NOTHING)
     postulante = models.ForeignKey('TblPostulante', models.DO_NOTHING)
 
     class Meta:
