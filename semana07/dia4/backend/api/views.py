@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from .models import TblArea,TblModalidad
-from .serializers import AreaSerializer,ModalidadSerializer
+from .models import TblArea,TblModalidad,TblNivel,TblOferta
+from .serializers import AreaSerializer,ModalidadSerializer,NivelSerializer,OfertaSerializer
 
 class Area(generics.ListCreateAPIView):
     queryset = TblArea.objects.all()
@@ -16,5 +16,18 @@ class Modalidad(generics.ListCreateAPIView):
     serializer_class = ModalidadSerializer
     
 class ModalidadDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ModalidadSerializer
     queryset = TblModalidad.objects.all()
+    serializer_class = ModalidadSerializer
+    
+class Nivel(generics.ListCreateAPIView):
+    queryset = TblNivel.objects.all()
+    serializer_class = NivelSerializer
+    
+class NivelDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = TblNivel.objects.all()
+    serializer_class = NivelSerializer
+    
+class Oferta(generics.ListCreateAPIView):
+    queryset = TblOferta.objects.all()
+    serializer_class = OfertaSerializer
+    

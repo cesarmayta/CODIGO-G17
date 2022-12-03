@@ -15,6 +15,9 @@ class TblArea(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_area'
+        
+    def __str__(self):
+        return self.area_descripcion
 
 
 class TblModalidad(models.Model):
@@ -24,6 +27,9 @@ class TblModalidad(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_modalidad'
+    
+    def __str__(self):
+        return self.modalidad_descripcion
 
 
 class TblNivel(models.Model):
@@ -34,6 +40,8 @@ class TblNivel(models.Model):
         managed = False
         db_table = 'tbl_nivel'
 
+    def __str__(self):
+        return self.nivel_descripcion
 
 class TblOferta(models.Model):
     oferta_id = models.AutoField(primary_key=True)
@@ -74,6 +82,9 @@ class TblPeriodo(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_periodo'
+        
+    def __str__(self):
+        return self.periodo_descripcion
 
 
 class TblPostulante(models.Model):
@@ -164,6 +175,9 @@ class TblUbicacion(models.Model):
     class Meta:
         managed = False
         db_table = 'tbl_ubicacion'
+    
+    def __str__(self):
+        return self.ubicacion_ciudad
 
 
 class TblUsuario(models.Model):
