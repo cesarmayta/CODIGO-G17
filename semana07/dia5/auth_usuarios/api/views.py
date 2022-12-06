@@ -4,10 +4,12 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication,SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
 
 class IndexView(APIView):
     
-    authentication_classes = [TokenAuthentication,SessionAuthentication, BasicAuthentication]
+    authentication_classes = [JWTAuthentication,TokenAuthentication,SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
     
     def get(self,request):
