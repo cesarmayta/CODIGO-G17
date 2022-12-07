@@ -17,10 +17,14 @@ mysqlConnection.connect(function(err){
     }
 })
 
+module.exports = mysqlConnection
+
+/*
 mysqlConnection.query('select count(*) as total from tarea',function(error,results,fields){
     if(error) throw error;
     console.log('total de tareas : ',results[0].total);
 });
 
 mysqlConnection.end();
+*/
 
