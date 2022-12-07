@@ -10,7 +10,7 @@ app.use(express.json());
 app.get('/',function(req,res){
     res.json({
         'status':true,
-        'content':'Mi primera app con express'
+        'content':'Mi primera app con express y nodejs'
     })
 })
 
@@ -42,6 +42,30 @@ app.post('/tarea',(req,res)=>{
             console.log(err);
         }
     })
+})
+
+
+app.put('/tarea/:id',(req,res)=>{
+    const {descripcion,estado} = req.body;
+    const {id} = req.params;
+
+    const query = `update tarea set
+                   descripcion=?,
+                   estado=?
+                   where id=?`
+    
+    mysqlConnection.query(query,[descripcion,estado,id],
+        (err,rows,fields)=>{
+            if(!err){
+                res.json({
+                    'status':true,
+                    'content':'registro actualizado'
+                })
+            }
+            else{
+                console.log(err);
+            }
+        })
 })
 
 app.listen(5000,()=>{
