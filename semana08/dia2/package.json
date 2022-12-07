@@ -1,0 +1,11 @@
+{
+  "name": "dia2",
+  "version": "1.0.0",
+  "description": "mi primer proyecto con nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "César Mayta",
+  "license": "MIT"
+}
