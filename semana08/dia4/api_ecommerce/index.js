@@ -8,6 +8,8 @@ app.get('/',(req,res)=>{
     })
 })
 
+app.use(require('./routes/categoria'));
+
 app.listen(config.port,function(){
     console.log('SERVIDOR EN http://localhost:'+config.port);
 })
