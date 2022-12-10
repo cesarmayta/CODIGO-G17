@@ -24,3 +24,24 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre
     
+class Atributo(models.Model):
+    TIPO_CHOICES = (
+        ('tamaño','TAMAÑO'),
+        ('modelo','MODELO'),
+        ('color','COLOR')
+    )
+    nombre = models.CharField(max_length=200)
+    tipo = models.CharField(max_length=100,choices=TIPO_CHOICES)
+    
+    def __str__(self):
+        return self.nombre
+    
+class ProductoPrecio(models.Model):
+    producto = models.ForeignKey(Producto,on_delete=models.RESTRICT)
+    atributo = models.ForeignKey(Atributo,on_delete=models.RESTRICT)
+    precio = models.DecimalField(max_digits=10,decimal_places=2)
+    
+    def __str__(self):
+        return str(self.precio)
+    
+    

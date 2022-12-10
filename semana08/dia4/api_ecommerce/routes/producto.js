@@ -22,4 +22,21 @@ router.get('/producto',(req,res)=>{
     })
 })
 
+router.get('/adicionales',(req,res)=>{
+    query = `
+    select id,nombre,precio
+    from panel_producto where categoria_id = 3
+    `
+    mysqlConnection.query(query,(err,rows,fields)=>{
+        if(!err){
+            res.json({
+                'status':true,
+                'content':rows
+            })
+        }else{
+            console.log(err);
+        }
+    })
+})
+
 module.exports = router;
