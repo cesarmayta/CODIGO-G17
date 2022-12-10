@@ -11,4 +11,6 @@ pasos para crear proyecto con nodejs y express
     https://www.toptal.com/developers/gitignore/api/node
 
 4 - crear scripts
+    "dev" : "nodemon index.js",
+    "start": "node index.js",
     
