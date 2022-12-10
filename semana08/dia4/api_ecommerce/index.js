@@ -9,6 +9,8 @@ app.get('/',(req,res)=>{
 })
 
 app.use(require('./routes/categoria'));
+app.use(require('./routes/marca'));
+app.use(require('./routes/producto'));
 
 app.listen(config.port,function(){
     console.log('SERVIDOR EN http://localhost:'+config.port);
