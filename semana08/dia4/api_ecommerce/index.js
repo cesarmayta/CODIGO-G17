@@ -1,4 +1,5 @@
 const express =  require('express')
+const {config} = require('./config')
 const app = express();
 
 app.get('/',(req,res)=>{
@@ -7,6 +8,6 @@ app.get('/',(req,res)=>{
     })
 })
 
-app.listen(5000,function(){
-    console.log('SERVIDOR EN http://localhost:5000');
+app.listen(config.port,function(){
+    console.log('SERVIDOR EN http://localhost:'+config.port);
 })
