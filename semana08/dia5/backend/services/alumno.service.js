@@ -40,6 +40,13 @@ class AlumnoService{
         const result = await this.sql.querySql(sqlAlumnoActualizado);
         return result;
     }
+
+    async delete(id){
+        const sqlDeleteAlumno = `delete from tbl_alumno
+                                where alumno_id = '${id}'`
+        await this.sql.querySql(sqlDeleteAlumno);
+        return true;
+    }
 }
 
 module.exports = AlumnoService;

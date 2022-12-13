@@ -67,9 +67,30 @@ function alumnoApi(app){
                     content:alumno[0]
                 })
             }else{
-                res.status(204).json({
+                res.status(200).json({
                     status:false,
                     content:'no existe el alumno a modificar'
+                })
+            }
+        }
+        catch(err){
+            console.log(err);
+        }
+    })
+    //eliminar un registro
+    router.delete('/:id',async function(req,res){
+        const {id} = req.params;
+        try{
+            const alumno = await objAlumnoService.delete(id);
+            if(alumno){
+                res.status(200).json({
+                    status:true,
+                    content:'registro eliminado'
+                })
+            }else{
+                res.status(204).json({
+                    status:false,
+                    content:'no existe el alumno a eliminar'
                 })
             }
         }
