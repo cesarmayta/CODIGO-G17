@@ -14,7 +14,23 @@ class MysqlLib{
     }
 
     async getConnection(){
-        
+        try{
+            const pool = await mysql.createPool(this.dbSettings);
+            console.log("estas conectado a la bd");
+            return pool;
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    async querySql(sql){
+        const pool = await this.getConnection();
+        return new Promise(function(resolve,reject){
+            pool.query(sql,function(err,result,fields){
+                if(!err) resolve(JSON.parse(JSON.stringify(result)));
+                else reject(err);
+            })
+        })
     }
 
 }
