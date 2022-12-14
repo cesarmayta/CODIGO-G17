@@ -1,6 +1,8 @@
 const express  = require('express');
 const AlumnoService = require('../services/alumno.service');
 
+const boom = require('@hapi/boom');
+
 function alumnoApi(app){
     const router = express.Router();
     app.use('/alumno',router);
@@ -37,6 +39,7 @@ function alumnoApi(app){
     router.get('/:id',async function(req,res){
         const {id} = req.params;
         try{
+            //console.log(a)
             const alumno = await objAlumnoService.getById(id);
             if(alumno.length > 0){
                 res.status(200).json({
@@ -44,14 +47,15 @@ function alumnoApi(app){
                     content:alumno[0]
                 })
             }else{
-                res.status(204).json({
+                /*res.status(200).json({
                     status:false,
                     content:'no existe el alumno'
-                })
+                })*/
+                res.json(boom.badData('no existe alumno'))
             }
         }
         catch(err){
-            console.log(err);
+            res.status(500).json(boom.badImplementation('error en la consulta'))
         }
     })
     //para actualizar 1 alumno
