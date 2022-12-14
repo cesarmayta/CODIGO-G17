@@ -3,7 +3,7 @@ const {config} = require('./config');
 
 const alumnoApi = require('./routes/alumno.routes');
 
-const {errorHandler} = require('./middlewares/error.handler');
+const {errorHandler,boomErrorHandler} = require('./middlewares/error.handler');
 
 const app = express();
 
@@ -23,5 +23,6 @@ alumnoApi(app)
 
 //middleware de errores
 app.use(errorHandler);
+app.use(boomErrorHandler);
 
 app.listen(config.port,()=>console.log('servidor en http://localhost:'+config.port))
