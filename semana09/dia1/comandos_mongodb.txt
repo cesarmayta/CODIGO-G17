@@ -17,3 +17,20 @@ comandos mongodb
 5 - buscar documentos
 
     db.alumnos.find().pretty()
+
+6 - insertar varios documentos
+
+    db.alumnos.insertMany([{nombre:'luis',email:'luis@gmail.com'},
+    {nombre:'Carla',email:'carla@hotmail.com'}])
+
+7 - busqueda con filtros
+
+    db.alumnos.find({nombre:'luis'})
+
+8 - actualización de documentos
+
+    db.alumnos.updateOne({nombre:'luis'},{ $set: { email: 'luis@codigo.edu.pe'}})
+
+9 - eliminar un documento
+
+    db.alumnos.deleteOne({_id : ObjectId("639a941f3be713ab1ccaabe8")})
