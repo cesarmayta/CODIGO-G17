@@ -46,10 +46,10 @@ function alumnoApi(app){
         try{
             //console.log(a)
             const alumno = await objAlumnoService.getById(id);
-            if(alumno.length > 0){
+            if(alumno){
                 res.status(200).json({
                     status:true,
-                    content:alumno[0]
+                    content:alumno
                 })
             }else{
                 /*res.status(200).json({
@@ -70,10 +70,10 @@ function alumnoApi(app){
 
         try{
             const alumno = await objAlumnoService.update({data,id});
-            if(alumno.length > 0){
+            if(alumno){
                 res.status(200).json({
                     status:true,
-                    content:alumno[0]
+                    content:alumno
                 })
             }else{
                 res.status(200).json({

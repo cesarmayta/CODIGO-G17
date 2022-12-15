@@ -32,28 +32,33 @@ class AlumnoService{
     }
 
     async getById(id){
-        const sqlGetById = `select * from tbl_alumno
+        /*const sqlGetById = `select * from tbl_alumno
                             where alumno_id = '${id}'`;
         
-        const result = await this.sql.querySql(sqlGetById);
+        const result = await this.sql.querySql(sqlGetById);*/
+        const result = await models.Alumno.findByPk(id);
         return result;
     }
 
     async update({data,id}){
-        const sqlUpdate = `update tbl_alumno set
+        /*const sqlUpdate = `update tbl_alumno set
                            alumno_nombre = '${data.nombre}'
                            ,alumno_email = '${data.email}'
                            where alumno_id = '${id}'`;
         await this.sql.querySql(sqlUpdate);
         const sqlAlumnoActualizado =  `select * from tbl_alumno where alumno_id='${id}'`;
-        const result = await this.sql.querySql(sqlAlumnoActualizado);
+        const result = await this.sql.querySql(sqlAlumnoActualizado);*/
+        const alumno = await this.getById(id);
+        const result = await alumno.update(data);
         return result;
     }
 
     async delete(id){
-        const sqlDeleteAlumno = `delete from tbl_alumno
+        /*const sqlDeleteAlumno = `delete from tbl_alumno
                                 where alumno_id = '${id}'`
-        await this.sql.querySql(sqlDeleteAlumno);
+        await this.sql.querySql(sqlDeleteAlumno);*/
+        const alumno = await this.getById(id);
+        await alumno.destroy();
         return true;
     }
 }
