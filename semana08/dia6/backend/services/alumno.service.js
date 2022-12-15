@@ -20,12 +20,14 @@ class AlumnoService{
     }
 
     async create({alumno}){
-        const sqlCreate = `insert into tbl_alumno(alumno_nombre,alumno_email)
+        /*const sqlCreate = `insert into tbl_alumno(alumno_nombre,alumno_email)
                            values ('${alumno.nombre}','${alumno.email}')`;
 
         await this.sql.querySql(sqlCreate);
         const sqlAlumnoCreado = "select * from tbl_alumno order by alumno_id desc limit 1";
         const result = await this.sql.querySql(sqlAlumnoCreado);
+        return result*/
+        const result = await models.Alumno.create(alumno);
         return result
     }
 

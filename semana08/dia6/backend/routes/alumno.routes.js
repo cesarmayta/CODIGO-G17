@@ -28,12 +28,12 @@ function alumnoApi(app){
         validatorHandler(createAlumnoSchema,'body')
         ,async function(req,res){
         const {body: alumno} = req;
-        console.log(alumno);
+        console.log("datos de nuevo alumno :",alumno);
         try{
             const crearAlumno = await objAlumnoService.create({alumno});
             res.status(201).json({
                 status:true,
-                content:crearAlumno[0]
+                content:crearAlumno
             })
         }catch(err){
             console.log(err)
