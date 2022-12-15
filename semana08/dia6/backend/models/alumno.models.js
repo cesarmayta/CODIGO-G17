@@ -31,7 +31,7 @@ class Alumno extends Model{
     static config(sequelize){
         return {
             sequelize,
-            tablaName:ALUMNO_TABLE,
+            tableName:ALUMNO_TABLE,
             modelName:'Alumno',
             timestamps:false
         }

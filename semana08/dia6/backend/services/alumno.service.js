@@ -2,6 +2,8 @@ const MysqlLib = require('../lib/mysql');
 
 const sequelize = require('../lib/sequelize');
 
+const {models} = require('../lib/sequelize');
+
 class AlumnoService{
 
     constructor(){
@@ -9,10 +11,11 @@ class AlumnoService{
     }
 
     async getAll(){
-        const sqlAll = "select * from tbl_alumno";
+        //const sqlAll = "select * from tbl_alumno";
         //const result = await this.sql.querySql(sqlAll);
-        const [result, metadata] = await sequelize.query(sqlAll);
+        //const [result, metadata] = await sequelize.query(sqlAll);
         //console.log(metadata)
+        const result = await models.Alumno.findAll();
         return result;
     }
 

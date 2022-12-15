@@ -1,6 +1,8 @@
 const { Sequelize } = require('sequelize');
 const {config} = require('../config');
 
+const setupModels = require('../models')
+
 const sequelize = new Sequelize(
     config.mysql_db,
     config.mysql_user,
@@ -12,6 +14,8 @@ const sequelize = new Sequelize(
     }
 
 );
+
+setupModels(sequelize);
 
 sequelize.sync();
 
