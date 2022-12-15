@@ -12,6 +12,7 @@ class AlumnoService{
         const sqlAll = "select * from tbl_alumno";
         //const result = await this.sql.querySql(sqlAll);
         const [result, metadata] = await sequelize.query(sqlAll);
+        //console.log(metadata)
         return result;
     }
 
