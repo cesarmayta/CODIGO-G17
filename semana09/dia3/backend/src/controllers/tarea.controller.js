@@ -10,4 +10,19 @@ tareaController.getAll = async (req,res)=>{
     })
 }
 
+tareaController.create = async (req,res)=>{
+    try{
+        console.log(req.body);
+        const nuevaTarea = new tareaModel(req.body)
+        await nuevaTarea.save();
+        res.json({
+            status:true,
+            content:nuevaTarea
+        })
+
+    }catch(error){
+        res.status(502).json({'Error':error})
+    }
+}
+
 module.exports = tareaController;
