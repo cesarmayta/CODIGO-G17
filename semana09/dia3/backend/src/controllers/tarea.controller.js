@@ -25,4 +25,17 @@ tareaController.create = async (req,res)=>{
     }
 }
 
+tareaController.update = async (req,res)=>{
+    const {id} = req.params;
+
+    const tareaEditada = await tareaModel.findOneAndUpdate({_id:id},req.body,{
+        returnOriginal: false
+    })
+
+    res.json({
+        status:true,
+        content:tareaEditada
+    })
+}
+
 module.exports = tareaController;
