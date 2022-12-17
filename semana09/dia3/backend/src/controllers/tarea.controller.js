@@ -38,4 +38,22 @@ tareaController.update = async (req,res)=>{
     })
 }
 
+tareaController.deleteOne = async (req,res) =>{
+    const {id} = req.params;
+
+    tareaModel.findByIdAndDelete(id,function(err,docs){
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.json({
+                status:true,
+                content:docs
+            })
+        }
+    })
+}
+
+
+
 module.exports = tareaController;
