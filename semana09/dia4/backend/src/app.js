@@ -9,11 +9,14 @@ app.use(express.json());
 
 app.set('port',config.port);
 
+
 app.get('/',(req,res)=>{
     res.json({
         "success": true,
         "message": "api rest de ecommerce"
     })
 })
+
+app.use('/product',require('./routes/products.route'));
 
 module.exports = app;
