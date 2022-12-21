@@ -48,7 +48,7 @@ productController.uploadImage = async (req,res)=>{
     console.log(productImage.name);
 
     let uploadPath;
-    uploadPath = '../backend/src/uploads' + productImage.name;
+    uploadPath = '../backend/src/uploads/' + productImage.name;
 
     await productImage.mv(uploadPath,function(err){
         if(err){
