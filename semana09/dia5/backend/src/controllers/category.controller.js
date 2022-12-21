@@ -15,7 +15,7 @@ categoryController.create = async (req,res)=>{
     try{
         const newCategory = new categoryModel(req.body)
         await newCategory.save();
-        res.json({
+        res.status(201).json({
             success:true,
             message:'Category added successfully',
             content:newCategory

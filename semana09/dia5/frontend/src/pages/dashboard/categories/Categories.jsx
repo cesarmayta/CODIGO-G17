@@ -25,7 +25,7 @@ export const Categories = () => {
       const token = GetToken();
       const response = await GetCategories(token);
       if (response.status === 200) {
-        setListOfCategories(response.data.data);
+        setListOfCategories(response.data.content);
       }
     };
     fetchData();
