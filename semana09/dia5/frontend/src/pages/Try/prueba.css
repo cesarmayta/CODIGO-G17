@@ -1,0 +1,155 @@
+.prueba_prueba {
+    width: 1000px;
+}
+
+.killa_datatable {
+    width: 100%;
+    position: relative;
+}
+
+.killa_button {
+    border: 1px solid #BCC2CE;
+    outline: none;
+    background-color: #fff;
+}
+
+.br-6 {
+    border-radius: 6px;
+}
+
+.killa_datatable_header {
+    width: 100%;
+    display: flex;
+    padding: 20px 10px;
+}
+
+.killa_datatable_header .killa_filter_icon {
+    border: 1px solid #BCC2CE;
+    background-color: #fff;
+    border-radius: 6px;
+    height: 32px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.killa_datatable_header .killa_search_input {
+    height: 32px;
+    border: 1px solid #BCC2CE;
+    border-radius: 6px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+}
+
+.killa_datatable_header .killa_search_input svg {
+    margin-right: 10px;
+}
+
+.killa_datatable_header .killa_search_input input {
+    border: none;
+    outline: none;
+}
+
+.killa_datatable_header .killa_add_button {
+    background-color: #2264E6;
+    border-radius: 6px;
+    outline: none;
+    border: 1px solid transparent;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.killa_datatable_table {
+    width: 100%;
+    /* table-layout: fixed; */
+}
+
+.killa_datatable_table td,
+th {
+    padding: 10px;
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+    font-size: 14px;
+}
+
+.killa_datatable_table thead {
+    background-color: #F4F7FC;
+    border-bottom: 1px solid #E9EDF5;
+    color: #464F60;
+}
+
+.killa_table_head_row th {
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.killa_table_body_row span {
+    background-color: #E1FCEF;
+    height: 20px;
+    border-radius: 10px;
+    padding: 2px 15px;
+    color: #14804A;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.killa_datatable_table .killa_table_body_row.stripe {
+    background-color: #F9FAFC;
+}
+
+.killa_datatable_table .killa_table_body_row:hover {
+    background-color: #EBF0FA
+}
+
+/* Footer */
+.killa_datatable_blur {
+    filter: blur(1rem);
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.killa_datatable_footer {
+    width: 100%;
+    height: 60px;
+    /* position: absolute;
+    bottom: 0; */
+    border-top: 1px solid #E9EDF5;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.killa_datatable_count {
+    font-size: 12px;
+}
+
+.killa_datatable_navigation {
+    display: flex;
+    align-items: center;
+}
+
+.killa_datatable_navigation span {
+    margin: 0 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.next_previous_button {
+    width: 24px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
