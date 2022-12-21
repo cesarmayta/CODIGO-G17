@@ -23,16 +23,16 @@ export const Products = () => {
   });
   const [bandera, setBandera] = useState(false);
 
-  /*useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       const token = GetToken();
       const response = await GetCategories(token);
       if (response.status === 200) {
-        setListOfCategories(response.data.data);
+        setListOfCategories(response.data.content);
       }
     };
     fetchData();
-  }, []);*/
+  }, []);
 
   useEffect(() => {
     setAdminTitle("Products");
@@ -181,8 +181,8 @@ export const Products = () => {
           >
             <option value="">Elegir Categoria</option>
             {listOfCategories.map((category, index) => (
-              <option key={index} value={category.categoriaId}>
-                {category.categoriaNombre}
+              <option key={index} value={index}>
+                {category.name}
               </option>
             ))}
           </select>

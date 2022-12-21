@@ -2,9 +2,9 @@ import { API_URL } from "@lib/Enviroments";
 
 export const GetCategories = async (token) => {
   const response = await fetch(`${API_URL}/categories`, {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
+    //headers: {
+    //  Authorization: "Bearer " + token,
+    //},
   });
   const status = response.status;
   const data = await response.json();
