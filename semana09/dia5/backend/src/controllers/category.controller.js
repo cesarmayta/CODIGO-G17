@@ -11,4 +11,23 @@ CategoryController.getAll = async (req,res)=>{
     })
 }
 
+CategoryController.create = async (req,res)=>{
+    try{
+        const newCategory = new CategoryModel(req.body)
+        await newCategory.save();
+        res.json({
+            success:true,
+            message:'Category added successfully',
+            content:newCategory
+        })
+
+    }catch(error){
+        res.status(502).json({
+            success:false,
+            message:'Error by registering a new Category',
+            content:error
+        })
+    }
+}
+
 module.exports = CategoryController;
