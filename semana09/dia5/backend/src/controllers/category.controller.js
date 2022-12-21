@@ -1,9 +1,9 @@
-const CategoryController = {}
+const categoryController = {}
 
-const CategoryModel = require('../models/category.model');
+const categoryModel = require('../models/category.model');
 
-CategoryController.getAll = async (req,res)=>{
-    const categories = await CategoryModel.find();
+categoryController.getAll = async (req,res)=>{
+    const categories = await categoryModel.find();
     res.json({
         success:true,
         message:'categories loaded',
@@ -11,9 +11,9 @@ CategoryController.getAll = async (req,res)=>{
     })
 }
 
-CategoryController.create = async (req,res)=>{
+categoryController.create = async (req,res)=>{
     try{
-        const newCategory = new CategoryModel(req.body)
+        const newCategory = new categoryModel(req.body)
         await newCategory.save();
         res.json({
             success:true,
@@ -30,4 +30,4 @@ CategoryController.create = async (req,res)=>{
     }
 }
 
-module.exports = CategoryController;
+module.exports = categoryController;
