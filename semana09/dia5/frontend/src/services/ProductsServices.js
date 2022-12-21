@@ -13,6 +13,7 @@ export const GetAllProducts = async (token) => {
   });
   const status = response.status;
   const data = await response.json();
+  console.log("lista de productos:",data);
   return { data, status };
 };
 

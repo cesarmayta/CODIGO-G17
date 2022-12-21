@@ -17,6 +17,7 @@ app.get('/',(req,res)=>{
     })
 })
 
-app.use('/products',require('./routes/products.route'));
+app.use('/products',require('./routes/product.route'));
+app.use('/categories',require('./routes/category.route'));
 
 module.exports = app;
