@@ -24,7 +24,7 @@ export const GetProductById = async (id) => {
 };
 
 export const PostProduct = async (product) => {
-  const response = await fetch(`${API_URL}/productos/productos/create`, {
+  const response = await fetch(`${API_URL}/products`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -43,5 +43,6 @@ export const UploadProductImage = async (image) => {
     body: formData,
   });
   const data = await response.json();
+  console.log("data de retorno de upload image : ",data)
   return data;
 };
