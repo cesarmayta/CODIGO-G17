@@ -17,6 +17,15 @@ export const GetAllProducts = async (token) => {
   return { data, status };
 };
 
+export const SearchAllProducts = async () => {
+  const response = await fetch(`${API_URL}/products`, {
+  });
+  const status = response.status;
+  const data = await response.json();
+  console.log("lista de productos a buscar:",data);
+  return { data, status };
+};
+
 export const GetProductById = async (id) => {
   const response = await fetch(`${API_URL}/productos/productos/${id}`);
   const data = await response.json();

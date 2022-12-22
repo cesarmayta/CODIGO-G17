@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { AdminContext } from '../../../contexts/AdminContext';
-import { GetAllProducts } from '../../../services/ProductsServices';
+import { SearchAllProducts } from '../../../services/ProductsServices';
 import './Search.scss';
 
 export const Search = () => {
@@ -11,10 +11,11 @@ export const Search = () => {
     const { pathname } = useLocation();
 
     useEffect(() => {
-        GetAllProducts()
+        SearchAllProducts()
             .then(response => {
-                handleProductsList("products", response);
-                setProductsFiltered(response);
+                console.log("data en search",response.data.content);
+                handleProductsList("products", response.data.content);
+                setProductsFiltered(response.data.content);
             })
     }, []);
 
