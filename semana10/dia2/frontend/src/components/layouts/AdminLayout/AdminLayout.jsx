@@ -5,9 +5,9 @@ import { isAuth } from "../../../services/AuthServices";
 import "./AdminLayout.scss";
 
 export const AdminLayout = () => {
-  //const isAuthenticated = isAuth();
+  const isAuthenticated = isAuth();
 
-  //if (!isAuthenticated) return <Navigate to="/" />;
+  if (!isAuthenticated) return <Navigate to="/" />;
 
   return (
     <div className="Admin-layout">

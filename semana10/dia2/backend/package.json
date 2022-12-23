@@ -20,7 +20,8 @@
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.8.1"
+    "mongoose": "^6.8.1",
+    "mongoose-unique-validator": "^3.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
