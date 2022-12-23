@@ -29,7 +29,7 @@ export const PublicLogin = ({
     e.preventDefault();
     const response = await SignIn(userCredentials);
     if (response.status === 200) {
-      localStorage.setItem("token", response.data.access_token);
+      localStorage.setItem("token", response.data.content);
       setAuthentication({
         ...authentication,
         isAuthenticated: true,

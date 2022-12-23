@@ -1,12 +1,16 @@
 import { API_URL } from "../lib/Enviroments";
 
 export const SignIn = async (user) => {
-  const response = await fetch(`${API_URL}/auth/signin`, {
+  const dataUserLogin = {
+    userName : user.username,
+    userPassword: user.password
+  }
+  const response = await fetch(`${API_URL}/users/auth`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(user),
+    body: JSON.stringify(dataUserLogin),
   });
   const data = await response.json();
   const status = response.status;
@@ -14,12 +18,17 @@ export const SignIn = async (user) => {
 };
 
 export const SignUp = async (user) => {
-  const response = await fetch(`${API_URL}/auth/signup`, {
+  const dataNewUser = {
+    userName:user.userEmail,
+    userPassword:user.userPassword
+  }
+  console.log("data nuevo usuario : ",dataNewUser);
+  const response = await fetch(`${API_URL}/users`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(user),
+    body: JSON.stringify(dataNewUser),
   });
   const data = await response.json();
   return data;
