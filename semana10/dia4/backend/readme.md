@@ -6,3 +6,8 @@
 5 - cd apimiembros
 6 - python manage.py startapp api
 7 - python manage.py runserver
+
+despues de crear los modelos
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
