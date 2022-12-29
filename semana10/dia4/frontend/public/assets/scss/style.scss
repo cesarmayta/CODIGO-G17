@@ -1,0 +1,64 @@
+ 
+
+@charset "UTF-8";
+
+/*
+* Author: Subier mohamed
+* URL: https://holathemes.com */
+
+@import 'variables';
+
+/* -------------------------------------------------------------- */
+/* 01. Graphic User Interface Elements
+-----------------------------------------------------------------*/ 
+
+@import 'elements/buttons';
+@import 'elements/form-styles';
+@import 'elements/checkbox';
+@import 'elements/radio-button';
+@import 'elements/on-off-switch';
+@import 'elements/common-typography';
+@import 'elements/star-rating';
+@import 'elements/breadcrumb';
+
+/* -------------------------------------------------------------- */
+/* 02. Vendor (third party assets styles)
+----------------------------------------------------------------- */
+
+@import 'vendor/bootstrap-select';
+@import 'vendor/custom-scrollbar';
+@import 'vendor/tooltips';
+
+/* -------------------------------------------------------------- */
+/* 03. Layouts
+----------------------------------------------------------------- */
+
+@import 'layout/bootstrap-grid';
+@import 'layout/course-card';
+@import 'layout/header';
+
+/* -------------------------------------------------------------- */
+/* 04. Add your custom classes 
+----------------------------------------------------------------- */
+
+@import '_custom';
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

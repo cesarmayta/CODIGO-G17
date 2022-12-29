@@ -1,0 +1,32 @@
+/* -------------------------------------------------------------- */
+/* Default Colors
+----------------------------------------------------------------- */
+$primary-color: 						    #2a41e8;
+$body-font-color:							#666;
+$body-background-color:						#edf2f7;
+$body-heading-color:						#333;
+$global-container-width:                    1220px ;
+
+
+/* -------------------------------------------------------------- */
+/* Typography
+----------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+$primary-font: 							    "Inter", sans-serif;
+$body-font-size: 							16px;
+$body-line-height: 							27px;
+$body-sub-line-height: 						26px;
+
+$homepage-heading-font-size: 				26px;
+$single-page-heading-font-size: 			20px;
+$listing-heading-font-size: 				18px;
+
+$global-border-radius:						4px;
+
+
+/* -------------------------------------------------------------- */
+/* Header Settings for Desktop Devices
+----------------------------------------------------------------- */
+$header-height: 							76px; 
+$logo-height: 								28px;
