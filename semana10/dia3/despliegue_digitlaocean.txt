@@ -1,0 +1,15 @@
+ssh root@ip-servidor
+
+sudo apt update
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+source ~/.bashrc
+
+nvm --version
+
+nvm install 16.16.0
+
+cd /home
+
+
