@@ -1,0 +1,50 @@
+{% load static %}
+    <!--header-->
+    <div class="site-header">
+
+        <p class="h-logo">
+            <a href="/"><img src="{% static 'img/logo.png' %}" alt="MultiShop"></a>
+        </p><!--
+    No Space
+    --><div class="h-shop">
+
+        <form method="post" action="{% url 'web:productosPorNombre' %}" class="h-search" id="h-search">
+            {% csrf_token %}
+            <input type="text" name="nombre" placeholder="Search...">
+            <button type="submit"><i class="ion-search"></i></button>
+        </form>
+
+        <ul class="h-shop-links">
+            <li class="h-search-btn" id="h-search-btn"><i class="ion-search"></i></li>
+            
+            <li class="h-shop-icon h-profile">
+                <a href="auth.html" title="My Account">
+                    <i class="ion-android-person"></i>
+                </a>
+                <ul class="h-profile-links">
+                    <li><a href="/login">Login / Registro</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </li>
+
+            {% include 'includes/header_carrito.html' %}
+
+
+        </ul>
+    </div><!--
+    No Space
+    --><div class="mainmenu">
+
+        <nav id="h-menu" class="h-menu">
+            <ul>
+
+                <li>
+                    <a href="elements.html">Menu</a>
+                </li>
+                
+            </ul>
+        </nav>
+
+    </div><!--
+    No Space
+--></div>

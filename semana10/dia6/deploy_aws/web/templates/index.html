@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+        <div class="section-top">
+
+            <h1 class="maincont-ttl">Catalogo</h1>
+            <ul class="b-crumbs">
+                <li><a href="/">Inicio</a></li>
+                <li>Catalogo</li>
+            </ul>
+        </div>
+
+        <!-- To make Sidebar "Not Sticky" just remove  id="section-list-withsb" -->
+        <div class="section-wrap-withsb">
+            <aside class="blog-sb-widgets section-sb" id="section-sb">
+                <div class="theiaStickySidebar">
+                    <p class="section-filter-toggle filter_hidden">
+                        <a href="#" id="section-filter-toggle-btn">Show Filter</a>
+                    </p>
+                    <div class="section-filter">
+                        <div class="section-filter">
+                            {% include 'includes/catalogo/categorias.html' %}
+                            {% include 'includes/catalogo/marcas.html' %}
+                        </div>
+                    </div>
+                </div>
+            </aside>        <div class="section-list-withsb" id="section-list-withsb">
+            <div class="theiaStickySidebar">
+
+                {% include 'includes/catalogo/catalogo.html' %}
+                <!--<ul class="page-numbers">
+                    <li><span class="page-numbers current">1</span></li>
+                    <li><a class="page-numbers" href="#">2</a></li>
+                    <li><a class="page-numbers" href="#">3</a></li>
+                    <li><a class="page-numbers" href="#">4</a></li>
+                    <li><a class="next page-numbers" href="#"><i class="fa fa-angle-right"></i></a></li>
+                </ul>-->
+            </div><!-- .theiaStickySidebar -->
+        </div><!-- .section-list-withsb -->
+        </div><!-- .section-wrap-withsb -->
+{% endblock %}

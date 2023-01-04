@@ -1,0 +1,183 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <ul class="b-crumbs">
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Catalog</a></li>
+        <li>Producto</li>
+    </ul>
+    <article>
+    <div class="prod">
+        <div class="prod-slider-wrap prod-slider-shown">
+            <div class="flexslider prod-slider" id="prod-slider">
+                <ul class="slides">
+                    <li>
+                        <a data-fancybox-group="prod" class="fancy-img" href="{{producto.imagen.url}}">
+                            <img src="{{producto.imagen.url}}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a data-fancybox-group="prod" class="fancy-img" href="{{producto.imagen.url}}">
+                            <img src="{{producto.imagen.url}}" alt="">
+                        </a>
+                    </li>
+                </ul>
+                <div class="prod-slider-count"><p>
+                    <span class="count-cur">1</span> / <span class="count-all">2</span></p><p class="hover-label prod-slider-zoom">
+                    <i class="icon ion-search"></i><span>Zoom In</span></p></div>
+            </div>
+            <div class="flexslider prod-thumbs" id="prod-thumbs">
+                <ul class="slides">
+                    <li>
+                        <img src="{{producto.imagen.url}}" alt="">
+                    </li>
+                    <li>
+                        <img src="{{producto.imagen.url}}" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="prod-cont">
+            <div class="prod-rating-wrap">
+                <p data-rating="4" class="prod-rating">
+                    <i class="rating-ico" title="1"></i>
+                    <i class="rating-ico" title="2"></i>
+                    <i class="rating-ico" title="3"></i>
+                    <i class="rating-ico" title="4"></i>
+                    <i class="rating-ico" title="5"></i>
+                </p>
+                <p class="prod-rating-count">7</p>
+            </div>
+            <p class="prod-categs"><a href="#">{{producto.categoria}}</a></p>
+            <h1>{{producto.nombre}}</h1>
+            <div class="variations_form cart">
+                <p class="prod-price">${{producto.precio}}</p>
+                <p class="prod-excerpt">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+                    Vestibulum tortor quam, feugiat vitae, ultricies eget... 
+                    <a id="prod-showdesc" class="prod-excerpt-more" href="#">read more</a></p>
+                <div class="prod-add">
+                    <form action="{% url 'web:agregarCarrito' producto.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="variations">
+                            <div class="variations-row">
+                                <div class="label"><label >Сolor</label></div>
+                                <div class="value">
+                                    <select>
+                                        <option value="">Choose an option</option>
+                                        <option value="blue">Blue</option>
+                                        <option value="green">Green</option>
+                                        <option value="yellow">Yellow</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="button"><i class="icon ion-android-cart"></i> Agregar al Carrito</button>
+                        <p class="qnt-wrap prod-li-qnt">
+                            <a href="#" class="qnt-plus prod-li-plus"><i class="icon ion-arrow-up-b"></i></a>
+                            <input type="text" name="cantidad" value="1">
+                            <a href="#" class="qnt-minus prod-li-minus"><i class="icon ion-arrow-down-b"></i></a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div class="prod-props">
+                <dl class="product_meta">
+                    <dt>SKU:</dt>
+                    <dd>{{producto.sku}}</dd>
+                    <dt>Marca:</dt>
+                    <dd><a href="#">{{producto.marca}}</a></dd>
+                    <dt>peso</dt>
+                    <dd>{{producto.peso}} kg</dd>
+                    <dt>Dimensiones</dt>
+                    <dd>{{producto.dimension}}</dd>
+                    <dt>Сolor</dt>
+                    <dd>{{producto.color}}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="prod-tabs-wrap">
+        <ul class="prod-tabs">
+            <li id="prod-desc" class="active" data-prodtab-num="1">
+                <a data-prodtab="#prod-tab-1" href="#">Descripción</a>
+            </li>
+            <li data-prodtab-num="2" id="prod-props">
+                <a data-prodtab="#prod-tab-2" href="#">Additional information</a>
+            </li>
+            <li data-prodtab-num="3" id="prod-reviews">
+                <a data-prodtab="#prod-tab-3" href="#">Reviews (7)</a>
+            </li>
+            <li class="prod-tabs-addreview">Add a review</li>	</ul>
+        <div class="prod-tab-cont">
+            <p data-prodtab-num="1" class="prod-tab-mob active" data-prodtab="#prod-tab-1">Description</p>
+            <div class="prod-tab page-styling prod-tab-desc" id="prod-tab-1">
+                <p>
+                    {{producto.descripcion}}
+                </p>
+            </div>
+            <p data-prodtab-num="2" class="prod-tab-mob" data-prodtab="#prod-tab-2">Additional information</p>
+            <div class="prod-tab" id="prod-tab-2">
+                <dl class="prod-tab-props">
+                    <dt>Weight</dt>
+                    <dd>1 kg</dd>
+                    <dt>Dimensions</dt>
+                    <dd>4 x 50 cm</dd>
+                    <dt>Сolor</dt>
+                    <dd><p><a href="#">Blue</a>, <a href="#">Green</a></p></dd>
+                    <dt>Manufacturer</dt>
+                    <dd><p><a href="#">Germany</a></p></dd>
+                    <dt>Material</dt>
+                    <dd><p><a href="#">Metall</a>, <a href="#">Plastic</a></p></dd>
+                </dl>
+            </div>
+            <p data-prodtab-num="3" class="prod-tab-mob" data-prodtab="#prod-tab-3">Reviews (7)</p>
+            <div class="prod-tab prod-reviews" id="prod-tab-3">
+                <div id="reviews">
+                    <div id="review_form_wrapper" class="prod-addreview-form">
+                        <div id="review_form">
+                            <div id="respond" class="comment-respond">
+                                <p class="prod-tab-addreview" id="reply-title">Add a Review</p>
+                                <form action="#" method="post" id="commentform" class="comment-form">
+                                    <div class="comment-form-rating">
+                                        <p class="stars"><span><a class="star-1" href="#">1</a><a class="star-2" href="#">2</a><a class="star-3" href="#">3</a><a class="star-4" href="#">4</a><a class="star-5" href="#">5</a></span></p>
+                                        <select>
+                                            <option value="">Rate…</option>
+                                            <option value="5">Perfect</option>
+                                            <option value="4">Good</option>
+                                            <option value="3">Average</option>
+                                            <option value="2">Not that bad</option>
+                                            <option value="1">Very Poor</option>
+                                        </select>
+                                    </div>
+                                    <textarea placeholder="Review"></textarea>
+                                    <input type="submit" class="submit" value="Add a Review">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <ul id="comments">
+                        <li class="prod-review">
+                            <div>
+                                <h3>admin</h3>
+                                <p class="prod-review-rating" title="Rated 5 out of 5">
+                                    <i class="rating-ico"></i>
+                                    <i class="rating-ico"></i>
+                                    <i class="rating-ico"></i>
+                                    <i class="rating-ico"></i>
+                                    <i class="rating-ico"></i>
+                                    <time datetime="2017-05-09T14:16:55+00:00">May 9, 2017</time>
+                                </p>
+                                <p>Aliquam ligula quam, vehicula non porta at, venenatis ac purus. Pellentesque pharetra, turpis sit amet elementum faucibus, tellus nisi condimentum metus, nec scelerisque tortor velit ac purus. Aenean interdum velit quis nisi rhoncus ullamcorper. Cras lorem metus, imperdiet vel tortor vitae, malesuada pellentesque felis. Nulla varius mi a varius semper. Sed tristique ligula tincidunt pellentesque rhoncus. Praesent purus urna, imperdiet in pellentesque sed, hendrerit quis mauris. Maecenas consequat ultrices augue ac tempor. Etiam semper eu ligula id iaculis. Morbi scelerisque neque at velit porta, et fringilla nisl pulvinar. Duis at rhoncus est, nec cursus orci. Nunc malesuada tellus magna, in feugiat mauris placerat eu. Nullam elementum est id aliquam imperdiet.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</article>
+
+{% endblock %}

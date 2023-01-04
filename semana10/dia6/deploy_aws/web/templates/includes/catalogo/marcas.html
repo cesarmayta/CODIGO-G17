@@ -1,0 +1,10 @@
+<div class="blog-sb-widget multishopbrands_widget">
+    <h3 class="widgettitle">Marcas</h3>
+    <ul class="brands-list-sb">
+        {% for marca in marcas %}
+        <li>
+            <a href="{% url 'web:productosPorMarca' marca.id %}">{{marca.nombre}}<span class="count">{{marca.producto_set.all.count}}</span></a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

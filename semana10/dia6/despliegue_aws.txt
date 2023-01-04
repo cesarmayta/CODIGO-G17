@@ -1,0 +1,86 @@
+#PASOS PARA DESPLIEGUE EN AWS
+1 - actualizar ubuntu e instalar librerias
+sudo apt update
+sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib curl
+
+2 - CREAMOS LA BASE DE DATOS EN postgresql
+sudo -u postgres psql
+CREATE DATABASE shop;
+CREATE USER codigo WITH PASSWORD 'codigo2022';
+
+ALTER ROLE codigo SET client_encoding TO 'utf8';
+ALTER ROLE codigo SET default_transaction_isolation TO 'read committed';
+ALTER ROLE codigo SET timezone TO 'UTC';
+
+GRANT ALL PRIVILEGES ON DATABASE shop TO codigo;
+
+\q
+
+2 - CREAMOS ENTORNO VIRTUAL Y CONFIGURAMOS python3
+
+sudo apt install python3.10-venv
+python3 -m venv venv
+source venv/bin/activate
+
+creamos un repositorio en donde subiremos el codigo del proyecto shop
+clonamos el repositorio en nuestra servidor
+
+ejecutamos pip install -r requirements.txt
+
+
+------
+
+DESPLIEGUYE CON GUNICORN Y NGINX
+1 - probamos gunicorn
+recolectamos staticos
+
+python3 manage.py collectstatic
+gunicorn --bind 0.0.0.0:8000 shop.wsgi
+
+2 - copiar los archivos al servidor
+primero se debe subir por git y hacer git pull en el servidor
+
+ingresamos a la carpeta awsconf
+
+sudo cp gunicorn.socket /etc/systemd/system/gunicorn.socket
+
+sudo cp gunicorn.service /etc/systemd/system/gunicorn.service
+
+sudo cp shop /etc/nginx/sites-available/shop
+
+3 - activamos nuestro socket
+
+sudo systemctl start gunicorn.socket
+sudo systemctl enable gunicorn.socket
+
+4 - verificamos el status del socket y servicio
+
+sudo systemctl status gunicorn.socket
+file /run/gunicorn.sock
+
+sudo systemctl status gunicorn
+
+curl --unix-socket /run/gunicorn.sock localhost
+
+5 - configuramos nginx
+
+sudo ln -s /etc/nginx/sites-available/shop /etc/nginx/sites-enabled
+
+sudo nginx -t
+
+sudo systemctl restart nginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

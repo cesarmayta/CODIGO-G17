@@ -1,0 +1,11 @@
+django
+Pillow
+django-admin-tailwind
+django-crispy-forms
+djangorestframework
+python-dotenv
+cloudinary
+django-paypal
+gunicorn
+psycopg2
+dj-database-url

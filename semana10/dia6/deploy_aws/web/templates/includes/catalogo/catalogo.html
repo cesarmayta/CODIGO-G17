@@ -1,0 +1,28 @@
+<div class="row prod-items prod-items-2">
+    {% for producto in productos %}
+    <article class="cf-sm-6 cf-md-6 cf-lg-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 sectgl-item">
+        <div class="sectgl prod-i">
+            <div class="prod-i-top">
+                <a class="prod-i-img" href="{% url 'web:producto' producto.id %}">
+                    <img src="{{producto.imagen.url}}" alt="">
+                </a>
+                <div class="prod-i-actions">
+                    <div class="prod-i-actions-in">
+                        <p class="prod-i-cart">
+                            <a href="{% url 'web:agregarCarrito' producto.id %}" class="hover-label prod-addbtn"><i class="icon ion-android-cart"></i><span>Añadir al carrito</span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="prod-i-bot">
+                <div class="prod-i-info">
+                    <p class="prod-i-price">${{producto.precio}}</p>
+                    <p class="prod-i-categ"><a href="catalog-gallery.html">{{producto.categoria}}</a></p>
+                </div>
+                <h3 class="prod-i-ttl"><a href="{% url 'web:producto' producto.id %}">{{producto.nombre}}</a></h3>
+            </div>
+        </div>
+    </article>
+    {% endfor %}
+
+</div>
