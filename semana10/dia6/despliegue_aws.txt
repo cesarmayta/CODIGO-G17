@@ -16,7 +16,7 @@ GRANT ALL PRIVILEGES ON DATABASE shop TO codigo;
 
 \q
 
-2 - CREAMOS ENTORNO VIRTUAL Y CONFIGURAMOS python3
+3 - CREAMOS ENTORNO VIRTUAL Y CONFIGURAMOS python3
 
 sudo apt install python3.10-venv
 python3 -m venv venv
@@ -30,7 +30,7 @@ ejecutamos pip install -r requirements.txt
 
 ------
 
-DESPLIEGUYE CON GUNICORN Y NGINX
+DESPLIEGUE CON GUNICORN Y NGINX
 1 - probamos gunicorn
 recolectamos staticos
 
@@ -69,6 +69,42 @@ sudo ln -s /etc/nginx/sites-available/shop /etc/nginx/sites-enabled
 sudo nginx -t
 
 sudo systemctl restart nginx
+
+PARA CUANDO HAGO CAMBIOS EN LOS ARCHIVOS DE CONFIGURACIÓN
+
+git pull origin main
+
+sudo cp gunicorn.socket /etc/systemd/system/gunicorn.socket
+
+sudo cp gunicorn.service /etc/systemd/system/gunicorn.service
+
+sudo cp shop /etc/nginx/sites-available/shop
+
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn.socket
+
+sudo rm /etc/nginx/sites-enabled/shop
+
+sudo ln -s /etc/nginx/sites-available/shop /etc/nginx/sites-enabled
+
+sudo nginx -t
+
+sudo systemctl restart nginx
+
+para cambiar los permisos a los archivos estaticos
+sudo chown -R root:root /home/ubuntu/shop-aws/static/
+
+para ver logs de nginx
+sudo tail -F /var/log/nginx/error.log
+
+para crear variables de entorno en ubuntu
+export CLOUDINARY_CLOUD_NAME=
+export CLOUDINARY_API_KEY=
+export CLOUDINARY_API_SECRET=
+
+para detener gunicorn:
+ sudo pkill gunicorn
+
 
 
 
