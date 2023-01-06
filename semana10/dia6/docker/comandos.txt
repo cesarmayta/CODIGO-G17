@@ -1,0 +1,17 @@
+#para ver la versión de docker
+docker version
+
+#para ver la lista de contenedores
+docker ps
+
+#para ver las imagenes
+docker images
+
+#para iniciar un contenedor para nginx
+docker run -d --name mi-nginx -p 8080:80 nginx:latest
+
+#para detener un contenedor
+docker stop idcontenedor
+
+#para eliminar un contenedor
+docker rm nombre-contenedor
