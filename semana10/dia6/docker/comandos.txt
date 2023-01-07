@@ -15,3 +15,10 @@ docker stop idcontenedor
 
 #para eliminar un contenedor
 docker rm nombre-contenedor
+
+#para ingresar al terminal de mi contenedor
+docker exec -it mi-nginx bash
+
+#para copiar archivos a mi contenedor
+docker run -d -p 80:80 --name n-codigo nginx
+docker cp $PWD/html/index.html  n-codigo:/usr/share/nginx/html
